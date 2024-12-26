@@ -1,44 +1,19 @@
 import { FastifyInstance, FastifyReply } from "fastify";
 import { score, game, account } from "../db/schema";
-import { eq, and } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 
 export class ScoreController {
   constructor(private fastify: FastifyInstance) {}
 
   async getAllScores() {
-    const scores = await this.fastify.db
-      .select({
-        id: score.id,
-        score: score.score,
-        gameId: score.gameId,
-        accountId: score.accountId,
-        createdAt: score.createdAt,
-        gameName: game.name,
-        accountAddress: account.address,
-      })
-      .from(score)
-      .leftJoin(game, eq(score.gameId, game.id))
-      .leftJoin(account, eq(score.accountId, account.id));
-
-    return scores;
+    return this.fastify.db.select().from(score);
   }
 
   async getScoreById(id: number | string, reply: FastifyReply) {
     const result = await this.fastify.db
-      .select({
-        id: score.id,
-        score: score.score,
-        gameId: score.gameId,
-        accountId: score.accountId,
-        createdAt: score.createdAt,
-        gameName: game.name,
-        accountAddress: account.address,
-      })
+      .select()
       .from(score)
-      .leftJoin(game, eq(score.gameId, game.id))
-      .leftJoin(account, eq(score.accountId, account.id))
       .where(eq(score.id, parseInt(id.toString())));
-
     if (!result.length) {
       reply.code(404);
       throw new Error("Score not found");
@@ -76,74 +51,60 @@ export class ScoreController {
   }
 
   async createScore(
-    gameId: number | string,
     accountId: number | string,
+    gameId: number | string,
     scoreValue: number,
     reply: FastifyReply
   ) {
-    // 验证游戏和账户是否存在
-    const [gameExists, accountExists] = await Promise.all([
-      this.fastify.db
-        .select()
-        .from(game)
-        .where(eq(game.id, parseInt(gameId.toString()))),
-      this.fastify.db
-        .select()
-        .from(account)
-        .where(eq(account.id, parseInt(accountId.toString()))),
-    ]);
-
-    if (!gameExists.length) {
-      reply.code(404);
-      throw new Error("Game not found");
-    }
+    // 验证账户是否存在
+    const accountExists = await this.fastify.db
+      .select()
+      .from(account)
+      .where(eq(account.id, parseInt(accountId.toString())));
 
     if (!accountExists.length) {
       reply.code(404);
       throw new Error("Account not found");
     }
 
+    // 验证游戏是否存在
+    const gameExists = await this.fastify.db
+      .select()
+      .from(game)
+      .where(eq(game.id, parseInt(gameId.toString())));
+
+    if (!gameExists.length) {
+      reply.code(404);
+      throw new Error("Game not found");
+    }
+
     // 验证分数是否为正数
     if (scoreValue < 0) {
       reply.code(400);
       throw new Error("Score must be a positive number");
     }
 
-    const result = await this.fastify.db
+    // 添加新的分数记录
+    const newScore = await this.fastify.db
       .insert(score)
       .values({
-        gameId: parseInt(gameId.toString()),
         accountId: parseInt(accountId.toString()),
+        gameId: parseInt(gameId.toString()),
         score: scoreValue,
       })
       .returning();
 
-    return result[0];
+    return newScore[0];
   }
 
-  async updateScore(
-    id: number | string,
-    scoreValue: number,
-    reply: FastifyReply
-  ) {
-    // 验证分数记录是否存在
-    const scoreExists = await this.fastify.db
-      .select()
-      .from(score)
-      .where(eq(score.id, parseInt(id.toString())));
-
-    if (!scoreExists.length) {
-      reply.code(404);
-      throw new Error("Score not found");
-    }
-
+  async updateScore(id: number | string, scoreValue: number, reply: FastifyReply) {
     // 验证分数是否为正数
     if (scoreValue < 0) {
       reply.code(400);
       throw new Error("Score must be a positive number");
     }
 
-    const result = await this.fastify.db
+    const updatedScore = await this.fastify.db
       .update(score)
       .set({
         score: scoreValue,
@@ -151,21 +112,26 @@ export class ScoreController {
       .where(eq(score.id, parseInt(id.toString())))
       .returning();
 
-    return result[0];
-  }
-
-  async deleteScore(id: number | string, reply: FastifyReply) {
-    const result = await this.fastify.db
-      .delete(score)
-      .where(eq(score.id, parseInt(id.toString())))
-      .returning();
-
-    if (!result.length) {
+    if (!updatedScore.length) {
       reply.code(404);
       throw new Error("Score not found");
     }
 
-    return result[0];
+    return updatedScore[0];
+  }
+
+  async deleteScore(id: number | string, reply: FastifyReply) {
+    const deletedScore = await this.fastify.db
+      .delete(score)
+      .where(eq(score.id, parseInt(id.toString())))
+      .returning();
+
+    if (!deletedScore.length) {
+      reply.code(404);
+      throw new Error("Score not found");
+    }
+
+    return deletedScore[0];
   }
 
   async getTopScores(gameId: number | string, limit: number = 10, reply: FastifyReply) {
@@ -196,5 +162,40 @@ export class ScoreController {
       .limit(limit);
 
     return scores;
+  }
+
+  // 获取游戏排行榜
+  async getGameRanking(
+    gameId: number | string,
+    limit: number = 10,
+    reply: FastifyReply
+  ) {
+    // 验证游戏是否存在
+    const gameExists = await this.fastify.db
+      .select()
+      .from(game)
+      .where(eq(game.id, parseInt(gameId.toString())));
+
+    if (!gameExists.length) {
+      reply.code(404);
+      throw new Error("Game not found");
+    }
+
+    // 获取排行榜
+    const rankings = await this.fastify.db
+      .select({
+        accountId: account.id,
+        accountAddress: account.address,
+        score: score.score,
+        gameId: score.gameId,
+        createdAt: score.createdAt,
+      })
+      .from(score)
+      .leftJoin(account, eq(score.accountId, account.id))
+      .where(eq(score.gameId, parseInt(gameId.toString())))
+      .orderBy(desc(score.score))
+      .limit(limit);
+
+    return rankings;
   }
 }

@@ -96,6 +96,7 @@ const accountRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
     const { id } = request.params
     return accountController.deleteAccount(id, reply)
   })
+
 }
 
 export default accountRoutes

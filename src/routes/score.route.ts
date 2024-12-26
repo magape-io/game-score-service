@@ -17,9 +17,7 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
               score: { type: 'number' },
               gameId: { type: 'number' },
               accountId: { type: 'number' },
-              createdAt: { type: 'string' },
-              gameName: { type: 'string' },
-              accountAddress: { type: 'string' }
+              createdAt: { type: 'string' }
             }
           }
         }
@@ -28,7 +26,7 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
   }, async () => {
     return scoreController.getAllScores()
   })
-  
+
   // 获取单个分数记录
   fastify.get<{
     Params: {
@@ -51,9 +49,7 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
             score: { type: 'number' },
             gameId: { type: 'number' },
             accountId: { type: 'number' },
-            createdAt: { type: 'string' },
-            gameName: { type: 'string' },
-            accountAddress: { type: 'string' }
+            createdAt: { type: 'string' }
           }
         }
       }
@@ -63,88 +59,6 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
     return scoreController.getScoreById(id, reply)
   })
 
-  // 获取指定游戏的所有分数
-  fastify.get<{
-    Params: {
-      gameId: string;
-    };
-  }>('/game/:gameId', {
-    schema: {
-      params: {
-        type: 'object',
-        required: ['gameId'],
-        properties: {
-          gameId: { type: 'string', pattern: '^\\d+$' }
-        }
-      },
-      response: {
-        200: {
-          type: 'array',
-          items: {
-            type: 'object',
-            properties: {
-              id: { type: 'number' },
-              score: { type: 'number' },
-              gameId: { type: 'number' },
-              accountId: { type: 'number' },
-              createdAt: { type: 'string' },
-              accountAddress: { type: 'string' }
-            }
-          }
-        }
-      }
-    }
-  }, async (request, reply) => {
-    const { gameId } = request.params
-    return scoreController.getScoresByGameId(gameId, reply)
-  })
-
-  // 获取指定游戏的前N名分数
-  fastify.get<{
-    Params: {
-      gameId: string;
-    };
-    Querystring: {
-      limit?: number;
-    };
-  }>('/game/:gameId/top', {
-    schema: {
-      params: {
-        type: 'object',
-        required: ['gameId'],
-        properties: {
-          gameId: { type: 'string', pattern: '^\\d+$' }
-        }
-      },
-      querystring: {
-        type: 'object',
-        properties: {
-          limit: { type: 'number', minimum: 1, maximum: 100, default: 10 }
-        }
-      },
-      response: {
-        200: {
-          type: 'array',
-          items: {
-            type: 'object',
-            properties: {
-              id: { type: 'number' },
-              score: { type: 'number' },
-              gameId: { type: 'number' },
-              accountId: { type: 'number' },
-              createdAt: { type: 'string' },
-              accountAddress: { type: 'string' }
-            }
-          }
-        }
-      }
-    }
-  }, async (request, reply) => {
-    const { gameId } = request.params
-    const { limit = 10 } = request.query
-    return scoreController.getTopScores(gameId, limit, reply)
-  })
-  
   // 创建分数记录
   fastify.post<{
     Body: {
@@ -178,7 +92,7 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
     }
   }, async (request, reply) => {
     const { gameId, accountId, score } = request.body
-    return scoreController.createScore(gameId, accountId, score, reply)
+    return scoreController.createScore(accountId, gameId, score, reply)
   })
 
   // 更新分数记录
@@ -254,6 +168,51 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
   }, async (request, reply) => {
     const { id } = request.params
     return scoreController.deleteScore(id, reply)
+  })
+
+  // 获取游戏排行榜
+  fastify.get<{
+    Params: {
+      gameId: string;
+    };
+    Querystring: {
+      limit?: number;
+    };
+  }>('/rankings/:gameId', {
+    schema: {
+      params: {
+        type: 'object',
+        required: ['gameId'],
+        properties: {
+          gameId: { type: 'string', pattern: '^\\d+$' }
+        }
+      },
+      querystring: {
+        type: 'object',
+        properties: {
+          limit: { type: 'number', minimum: 1, maximum: 100, default: 10 }
+        }
+      },
+      response: {
+        200: {
+          type: 'array',
+          items: {
+            type: 'object',
+            properties: {
+              accountId: { type: 'number' },
+              accountAddress: { type: 'string' },
+              score: { type: 'number' },
+              gameId: { type: 'number' },
+              createdAt: { type: 'string' }
+            }
+          }
+        }
+      }
+    }
+  }, async (request, reply) => {
+    const { gameId } = request.params
+    const { limit = 10 } = request.query
+    return scoreController.getGameRanking(gameId, limit, reply)
   })
 }
 

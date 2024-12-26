@@ -282,3 +282,55 @@
 {"level":30,"time":1735205200208,"pid":87425,"hostname":"MacBook-Pro-2.local","reqId":"req-j","res":{"statusCode":400},"responseTime":18.74237498641014,"msg":"request completed"}
 {"level":30,"time":1735205378530,"pid":87425,"hostname":"MacBook-Pro-2.local","reqId":"req-k","req":{"method":"DELETE","url":"/accounts/1","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":57652},"msg":"incoming request"}
 {"level":30,"time":1735205378562,"pid":87425,"hostname":"MacBook-Pro-2.local","reqId":"req-k","res":{"statusCode":200},"responseTime":30.796750009059906,"msg":"request completed"}
+{"level":30,"time":1735205689419,"pid":88467,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1735205689419,"pid":88467,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
+{"level":30,"time":1735205825336,"pid":88631,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1735205825336,"pid":88631,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
+{"level":30,"time":1735205946928,"pid":88631,"hostname":"MacBook-Pro-2.local","reqId":"req-1","req":{"method":"POST","url":"/accounts/1/scores","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":59116},"msg":"incoming request"}
+{"level":30,"time":1735205947003,"pid":88631,"hostname":"MacBook-Pro-2.local","reqId":"req-1","res":{"statusCode":404},"err":{"type":"Error","message":"Account not found","stack":"Error: Account not found\n    at AccountController.addGameScore (/Users/andy/Documents/rampup/fastify-good-start/src/controllers/account.controller.ts:79:13)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"},"msg":"Account not found"}
+{"level":30,"time":1735205947014,"pid":88631,"hostname":"MacBook-Pro-2.local","reqId":"req-1","res":{"statusCode":404},"responseTime":86.15895900130272,"msg":"request completed"}
+{"level":30,"time":1735206022123,"pid":88631,"hostname":"MacBook-Pro-2.local","reqId":"req-2","req":{"method":"GET","url":"/accounts/rankings/1?limit=20","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":59245},"msg":"incoming request"}
+{"level":30,"time":1735206022177,"pid":88631,"hostname":"MacBook-Pro-2.local","reqId":"req-2","res":{"statusCode":404},"err":{"type":"Error","message":"Game not found","stack":"Error: Game not found\n    at AccountController.getGameRanking (/Users/andy/Documents/rampup/fastify-good-start/src/controllers/account.controller.ts:126:13)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"},"msg":"Game not found"}
+{"level":30,"time":1735206022179,"pid":88631,"hostname":"MacBook-Pro-2.local","reqId":"req-2","res":{"statusCode":404},"responseTime":54.186957985162735,"msg":"request completed"}
+{"level":30,"time":1735206064643,"pid":89028,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1735206064643,"pid":89028,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
+{"level":30,"time":1735206084605,"pid":89150,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1735206084605,"pid":89150,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
+{"level":30,"time":1735206103746,"pid":89150,"hostname":"MacBook-Pro-2.local","reqId":"req-1","req":{"method":"POST","url":"/accounts","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":59419},"msg":"incoming request"}
+{"level":30,"time":1735206103788,"pid":89150,"hostname":"MacBook-Pro-2.local","reqId":"req-1","res":{"statusCode":200},"responseTime":41.839875012636185,"msg":"request completed"}
+{"level":30,"time":1735206103798,"pid":89150,"hostname":"MacBook-Pro-2.local","reqId":"req-2","req":{"method":"POST","url":"/accounts","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":59422},"msg":"incoming request"}
+{"level":30,"time":1735206103802,"pid":89150,"hostname":"MacBook-Pro-2.local","reqId":"req-2","res":{"statusCode":200},"responseTime":3.7752499878406525,"msg":"request completed"}
+{"level":30,"time":1735206172990,"pid":89150,"hostname":"MacBook-Pro-2.local","reqId":"req-3","req":{"method":"POST","url":"/accounts/1/scores","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":59608},"msg":"incoming request"}
+{"level":30,"time":1735206173031,"pid":89150,"hostname":"MacBook-Pro-2.local","reqId":"req-3","res":{"statusCode":404},"err":{"type":"Error","message":"Account not found","stack":"Error: Account not found\n    at AccountController.addGameScore (/Users/andy/Documents/rampup/fastify-good-start/src/controllers/account.controller.ts:79:13)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"},"msg":"Account not found"}
+{"level":30,"time":1735206173036,"pid":89150,"hostname":"MacBook-Pro-2.local","reqId":"req-3","res":{"statusCode":404},"responseTime":45.59375,"msg":"request completed"}
+{"level":30,"time":1735206173044,"pid":89150,"hostname":"MacBook-Pro-2.local","reqId":"req-4","req":{"method":"POST","url":"/accounts/2/scores","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":59611},"msg":"incoming request"}
+{"level":30,"time":1735206173077,"pid":89150,"hostname":"MacBook-Pro-2.local","reqId":"req-4","res":{"statusCode":200},"responseTime":33.02137500047684,"msg":"request completed"}
+{"level":30,"time":1735206208825,"pid":89150,"hostname":"MacBook-Pro-2.local","reqId":"req-5","req":{"method":"POST","url":"/accounts/1/scores","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":59689},"msg":"incoming request"}
+{"level":30,"time":1735206208870,"pid":89150,"hostname":"MacBook-Pro-2.local","reqId":"req-5","res":{"statusCode":404},"err":{"type":"Error","message":"Account not found","stack":"Error: Account not found\n    at AccountController.addGameScore (/Users/andy/Documents/rampup/fastify-good-start/src/controllers/account.controller.ts:79:13)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"},"msg":"Account not found"}
+{"level":30,"time":1735206208872,"pid":89150,"hostname":"MacBook-Pro-2.local","reqId":"req-5","res":{"statusCode":404},"responseTime":45.463541984558105,"msg":"request completed"}
+{"level":30,"time":1735206273485,"pid":89150,"hostname":"MacBook-Pro-2.local","reqId":"req-6","req":{"method":"POST","url":"/accounts/3/scores","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":59851},"msg":"incoming request"}
+{"level":30,"time":1735206273556,"pid":89150,"hostname":"MacBook-Pro-2.local","reqId":"req-6","res":{"statusCode":200},"responseTime":70.38745898008347,"msg":"request completed"}
+{"level":30,"time":1735206299562,"pid":89150,"hostname":"MacBook-Pro-2.local","reqId":"req-7","req":{"method":"GET","url":"/accounts/rankings/1","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":59914},"msg":"incoming request"}
+{"level":30,"time":1735206299646,"pid":89150,"hostname":"MacBook-Pro-2.local","reqId":"req-7","res":{"statusCode":200},"responseTime":82.39624997973442,"msg":"request completed"}
+{"level":30,"time":1735206299668,"pid":89150,"hostname":"MacBook-Pro-2.local","reqId":"req-8","req":{"method":"GET","url":"/accounts/rankings/1?limit=5","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":59918},"msg":"incoming request"}
+{"level":30,"time":1735206299682,"pid":89150,"hostname":"MacBook-Pro-2.local","reqId":"req-8","res":{"statusCode":200},"responseTime":13.90404200553894,"msg":"request completed"}
+{"level":30,"time":1735206554426,"pid":90567,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1735206554426,"pid":90567,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
+{"level":30,"time":1735206577498,"pid":90973,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1735206577498,"pid":90973,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
+{"level":30,"time":1735206614746,"pid":90973,"hostname":"MacBook-Pro-2.local","reqId":"req-1","req":{"method":"GET","url":"/accounts/rankings/1","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":61882},"msg":"incoming request"}
+{"level":30,"time":1735206614747,"pid":90973,"hostname":"MacBook-Pro-2.local","reqId":"req-1","msg":"Route GET:/accounts/rankings/1 not found"}
+{"level":30,"time":1735206614750,"pid":90973,"hostname":"MacBook-Pro-2.local","reqId":"req-1","res":{"statusCode":404},"responseTime":4.173791021108627,"msg":"request completed"}
+{"level":30,"time":1735206614758,"pid":90973,"hostname":"MacBook-Pro-2.local","reqId":"req-2","req":{"method":"GET","url":"/accounts/rankings/1?limit=5","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":61884},"msg":"incoming request"}
+{"level":30,"time":1735206614758,"pid":90973,"hostname":"MacBook-Pro-2.local","reqId":"req-2","msg":"Route GET:/accounts/rankings/1?limit=5 not found"}
+{"level":30,"time":1735206614758,"pid":90973,"hostname":"MacBook-Pro-2.local","reqId":"req-2","res":{"statusCode":404},"responseTime":0.2792090177536011,"msg":"request completed"}
+{"level":30,"time":1735206624514,"pid":90973,"hostname":"MacBook-Pro-2.local","reqId":"req-3","req":{"method":"GET","url":"/scores/rankings/1?limit=10","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":61900},"msg":"incoming request"}
+{"level":30,"time":1735206624605,"pid":90973,"hostname":"MacBook-Pro-2.local","reqId":"req-3","res":{"statusCode":200},"responseTime":85.99899998307228,"msg":"request completed"}
+{"level":30,"time":1735206636437,"pid":90973,"hostname":"MacBook-Pro-2.local","reqId":"req-4","req":{"method":"GET","url":"/scores/rankings/1?limit=10","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":61925},"msg":"incoming request"}
+{"level":30,"time":1735206636487,"pid":90973,"hostname":"MacBook-Pro-2.local","reqId":"req-4","res":{"statusCode":200},"responseTime":49.86062502861023,"msg":"request completed"}
+{"level":30,"time":1735206639643,"pid":90973,"hostname":"MacBook-Pro-2.local","reqId":"req-5","req":{"method":"GET","url":"/serviceWorker.js","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":61943},"msg":"incoming request"}
+{"level":30,"time":1735206639644,"pid":90973,"hostname":"MacBook-Pro-2.local","reqId":"req-5","msg":"Route GET:/serviceWorker.js not found"}
+{"level":30,"time":1735206639644,"pid":90973,"hostname":"MacBook-Pro-2.local","reqId":"req-5","res":{"statusCode":404},"responseTime":0.5625829994678497,"msg":"request completed"}
+{"level":30,"time":1735206667525,"pid":90973,"hostname":"MacBook-Pro-2.local","reqId":"req-6","req":{"method":"GET","url":"/serviceWorker.js","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":62107},"msg":"incoming request"}
+{"level":30,"time":1735206667526,"pid":90973,"hostname":"MacBook-Pro-2.local","reqId":"req-6","msg":"Route GET:/serviceWorker.js not found"}
+{"level":30,"time":1735206667527,"pid":90973,"hostname":"MacBook-Pro-2.local","reqId":"req-6","res":{"statusCode":404},"responseTime":1.077666014432907,"msg":"request completed"}
