@@ -4,6 +4,7 @@ import { helloRoutes } from './routes/hello.route'
 import { setupSwagger } from './plugins/swagger'
 import { loggerConfig } from './utils/logger'
 import { appConfig } from './config/app.config'
+import drizzlePlugin from './plugins/drizzle'
 
 // 创建 Fastify 实例
 const server = fastify({ logger: loggerConfig })
@@ -11,6 +12,7 @@ const server = fastify({ logger: loggerConfig })
 // 注册插件
 server.register(cors, { origin: true })
 server.register(setupSwagger)
+server.register(drizzlePlugin)
 
 // 注册路由
 server.register(helloRoutes)

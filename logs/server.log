@@ -51,3 +51,11 @@
 {"level":30,"time":1734429119810,"pid":79696,"hostname":"MacBook-Pro-2.local","msg":"服务器已关闭"}
 {"level":30,"time":1734429136728,"pid":82368,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:3000"}
 {"level":30,"time":1734429136728,"pid":82368,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
+{"level":30,"time":1735194936979,"pid":48263,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1735194936979,"pid":48263,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
+{"level":30,"time":1735195347213,"pid":48776,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1735195347214,"pid":48776,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
+{"level":30,"time":1735195852368,"pid":49340,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1735195852368,"pid":49340,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
+{"level":30,"time":1735195856337,"pid":49403,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1735195856337,"pid":49403,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
