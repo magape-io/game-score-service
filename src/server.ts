@@ -5,6 +5,7 @@ import { setupSwagger } from './plugins/swagger'
 import { loggerConfig } from './utils/logger'
 import { appConfig } from './config/app.config'
 import drizzlePlugin from './plugins/drizzle'
+import userRoutes from './routes/user.route'
 
 // 创建 Fastify 实例
 const server = fastify({ logger: loggerConfig })
@@ -16,6 +17,7 @@ server.register(drizzlePlugin)
 
 // 注册路由
 server.register(helloRoutes)
+server.register(userRoutes, { prefix: '/users' })
 
 // 启动服务器
 const start = async (): Promise<void> => {
