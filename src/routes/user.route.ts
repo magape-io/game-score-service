@@ -1,87 +1,84 @@
 import { FastifyPluginAsync } from 'fastify'
-import { eq } from 'drizzle-orm'
-import { users } from '../db/schema'
-import { z } from 'zod'
-
-// 验证请求体的 schema
-const createUserSchema = z.object({
-  name: z.string().min(1),
-  email: z.string().email()
-})
-
-const updateUserSchema = createUserSchema.partial()
+import { zodToJsonSchema } from 'zod-to-json-schema'
+import { UserController } from '../controllers/user.controller'
+import { createUserSchema, updateUserSchema, CreateUserBody, UpdateUserBody } from '../types/user.types'
 
 const userRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
+  const userController = new UserController(fastify)
+
   // 获取所有用户
-  fastify.get('/', async () => {
-    const allUsers = await fastify.db.select().from(users)
-    return allUsers
+  fastify.get('/', {}, async () => {
+    return userController.getAllUsers()
   })
 
   // 获取单个用户
-  fastify.get('/:id', async (request, reply) => {
-    const { id } = request.params as { id: string }
-    const user = await fastify.db
-      .select()
-      .from(users)
-      .where(eq(users.id, parseInt(id)))
-      .limit(1)
-
-    if (!user.length) {
-      reply.code(404)
-      throw new Error('User not found')
+  fastify.get<{
+    Params: {
+      id: string;
+    };
+  }>('/:id', {
+    schema: {
+      params: {
+        type: 'object',
+        properties: {
+          id: { type: 'string', pattern: '^\\d+$' }
+        }
+      }
     }
-
-    return user[0]
+  }, async (request, reply) => {
+    const { id } = request.params
+    return userController.getUserById(id, reply)
   })
 
   // 创建用户
-  fastify.post('/', async (request, reply) => {
-    const body = createUserSchema.parse(request.body)
-    
-    const newUser = await fastify.db
-      .insert(users)
-      .values(body)
-      .returning()
-
-    reply.code(201)
-    return newUser[0]
+  fastify.post<{
+    Body: CreateUserBody;
+  }>('/', {
+    schema: {
+      body: zodToJsonSchema(createUserSchema)
+    }
+  }, async (request, reply) => {
+    return userController.createUser(request.body, reply)
   })
 
   // 更新用户
-  fastify.patch('/:id', async (request, reply) => {
-    const { id } = request.params as { id: string }
-    const body = updateUserSchema.parse(request.body)
-
-    const updatedUser = await fastify.db
-      .update(users)
-      .set(body)
-      .where(eq(users.id, parseInt(id)))
-      .returning()
-
-    if (!updatedUser.length) {
-      reply.code(404)
-      throw new Error('User not found')
+  fastify.put<{
+    Params: {
+      id: string;
+    };
+    Body: UpdateUserBody;
+  }>('/:id', {
+    schema: {
+      body: zodToJsonSchema(updateUserSchema),
+      params: {
+        type: 'object',
+        properties: {
+          id: { type: 'string', pattern: '^\\d+$' }
+        }
+      }
     }
-
-    return updatedUser[0]
+  }, async (request, reply) => {
+    const { id } = request.params
+    return userController.updateUser(id, request.body, reply)
   })
 
   // 删除用户
-  fastify.delete('/:id', async (request, reply) => {
-    const { id } = request.params as { id: string }
-    
-    const deletedUser = await fastify.db
-      .delete(users)
-      .where(eq(users.id, parseInt(id)))
-      .returning()
-
-    if (!deletedUser.length) {
-      reply.code(404)
-      throw new Error('User not found')
+  fastify.delete<{
+    Params: {
+      id: string;
+    };
+  }>('/:id', {
+    schema: {
+      params: {
+        type: 'object',
+        properties: {
+          id: { type: 'string', pattern: '^\\d+$' }
+        }
+      }
     }
-
-    reply.code(204)
+  }, async (request, reply) => {
+    const { id } = request.params
+    return userController.deleteUser(id, reply)
   })
 }
 
