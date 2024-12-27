@@ -1,4 +1,4 @@
-# 🚀 Fastify Starter Project
+# 🚀 Game Score Service
 
 <div align="center">
 
