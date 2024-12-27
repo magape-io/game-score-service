@@ -17,7 +17,9 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
               score: { type: 'number' },
               gameId: { type: 'number' },
               accountId: { type: 'number' },
-              createdAt: { type: 'string' }
+              createdAt: { type: 'string' },
+              accountAddress: { type: 'string' },
+              gameName: { type: 'string' },
             }
           }
         }
