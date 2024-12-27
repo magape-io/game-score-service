@@ -9,7 +9,10 @@
     "build": "tsc",
     "watch": "tsc -w",
     "test": "tap --ts --no-check-coverage",
-    "test:watch": "tap --ts --watch --no-check-coverage"
+    "test:watch": "tap --ts --watch --no-check-coverage",
+    "db:generate": "npx drizzle-kit generate",
+    "db:migrate": "npx drizzle-kit migrate",
+    "db:studio": "npx drizzle-kit studio"
   },
   "dependencies": {
     "@fastify/cors": "^8.4.1",

@@ -3,7 +3,7 @@ import { FastifyPluginAsync } from 'fastify';
 import { Pool } from "pg";
 
 import fp from 'fastify-plugin';
-
+console.log('process.env.DATABASE_URL',process.env.DATABASE_URL)
 // 数据库连接配置
 const connectionString = process.env.DATABASE_URL || 'postgres://postgres:123456@localhost:5432/postgres';
 
