@@ -515,3 +515,16 @@
 {"level":30,"time":1735262957793,"pid":17904,"hostname":"MacBook-Pro-2.local","reqId":"req-4","res":{"statusCode":200},"responseTime":256.47154200077057,"msg":"request completed"}
 {"level":30,"time":1735263082731,"pid":17904,"hostname":"MacBook-Pro-2.local","reqId":"req-5","req":{"method":"GET","url":"/scores","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":59732},"msg":"incoming request"}
 {"level":30,"time":1735263083992,"pid":17904,"hostname":"MacBook-Pro-2.local","reqId":"req-5","res":{"statusCode":200},"responseTime":1257.3527080118656,"msg":"request completed"}
+{"level":30,"time":1735263333899,"pid":19265,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1735263333899,"pid":19265,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
+{"level":30,"time":1735263343717,"pid":19364,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1735263343717,"pid":19364,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
+{"level":50,"time":1735263478527,"pid":19857,"hostname":"MacBook-Pro-2.local","err":{"type":"Error","message":"listen EADDRINUSE: address already in use 0.0.0.0:3000","stack":"Error: listen EADDRINUSE: address already in use 0.0.0.0:3000\n    at Server.setupListenHandle [as _listen2] (node:net:1817:16)\n    at listenInCluster (node:net:1865:12)\n    at doListen (node:net:2014:7)\n    at processTicksAndRejections (node:internal/process/task_queues:83:21)","code":"EADDRINUSE","errno":-48,"syscall":"listen","address":"0.0.0.0","port":3000},"msg":"listen EADDRINUSE: address already in use 0.0.0.0:3000"}
+{"level":30,"time":1735263515735,"pid":19364,"hostname":"MacBook-Pro-2.local","msg":"服务器已关闭"}
+{"level":30,"time":1735263520150,"pid":20087,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1735263520150,"pid":20087,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
+{"level":30,"time":1735263610663,"pid":20087,"hostname":"MacBook-Pro-2.local","msg":"服务器已关闭"}
+{"level":30,"time":1735263616023,"pid":20495,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1735263616023,"pid":20495,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
+{"level":30,"time":1735263624547,"pid":20495,"hostname":"MacBook-Pro-2.local","reqId":"req-1","req":{"method":"GET","url":"/scores","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":61205},"msg":"incoming request"}
+{"level":30,"time":1735263624617,"pid":20495,"hostname":"MacBook-Pro-2.local","reqId":"req-1","res":{"statusCode":200},"responseTime":68.99125000834465,"msg":"request completed"}

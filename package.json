@@ -4,8 +4,8 @@
   "description": "A starter project for learning Fastify and Node.js",
   "main": "dist/server.js",
   "scripts": {
-    "start": "node dist/server.js",
-    "dev": "nodemon",
+    "start": "NODE_ENV=production node dist/server.js",
+    "dev": "NODE_ENV=development nodemon",
     "build": "tsc",
     "watch": "tsc -w",
     "test": "tap --ts --no-check-coverage",
