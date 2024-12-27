@@ -1,78 +1,163 @@
-** NO CODE, All FROM AI **
+# 🚀 Fastify Starter Project
 
-<|pad|><|start_header|>assistant<|end_header|>
+<div align="center">
 
-```
-# Fastify Starter Project
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Fastify](https://img.shields.io/badge/fastify-%23000000.svg?style=for-the-badge&logo=fastify&logoColor=white)](https://www.fastify.io/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
 
-A TypeScript-based Fastify server with Swagger documentation, structured logging, and a modular architecture.
+A modern, high-performance web server built with Fastify and TypeScript, featuring PostgreSQL integration, 
+environment-based configuration, and comprehensive API documentation.
 
-## Features
+[Getting Started](#-getting-started) •
+[Features](#-features) •
+[Documentation](#-documentation) •
+[Development](#-development)
 
-- **Fastify** - High performance web framework
-- **TypeScript** - Type safety and better developer experience
-- **Swagger/OpenAPI** - API documentation with @fastify/swagger
-- **Structured Logging** - Built-in logging system
-- **Modular Architecture** - Controllers, Routes, and Plugins separation
+</div>
 
-## Getting Started
+## ✨ Features
+
+### Core Technologies
+- 🚄 **Fastify** - Lightning fast web framework
+- 📘 **TypeScript** - Type safety and enhanced developer experience
+- 🐘 **PostgreSQL + Drizzle ORM** - Robust database integration with type-safe queries
+- 🔄 **Environment Management** - Seamless dev/prod configuration switching
+
+### Developer Experience
+- 📚 **Swagger/OpenAPI** - Interactive API documentation
+- 📊 **Structured Logging** - Comprehensive logging system
+- 🧪 **Testing** - Integrated testing with tap
+- 🔌 **Hot Reload** - Fast development with nodemon
+
+### Architecture & Security
+- 🏗️ **Modular Architecture** - Clean separation of concerns
+- 🔒 **Environment-based Config** - Secure configuration management
+- 🌐 **CORS Support** - Built-in Cross-Origin Resource Sharing
+- 📦 **Dependency Management** - Modern package management with pnpm
+
+## 🚦 Getting Started
 
 ### Prerequisites
 
 - Node.js (v14 or higher)
-- npm or yarn
+- PostgreSQL database
+- pnpm (recommended) or npm
 
-### Installation
+### Quick Start 🏃‍♂️
 
+1️⃣ **Clone and Install**
 ```bash
 # Clone the repository
 git clone <your-repo-url>
 
 # Install dependencies
-npm install
+pnpm install
 ```
 
-### Development
-
+2️⃣ **Configure Environment**
 ```bash
-# Start development server with hot reload
-npm run dev
-
-# Build the project
-npm run build
-
-# Start production server
-npm start
+# Set up environment files
+cp .env.example .env.development
+cp .env.example .env.production
 ```
 
-## Project Structure
+3️⃣ **Database Setup**
+```bash
+# Run migrations
+pnpm db:migrate
+
+# (Optional) Explore with Drizzle Studio
+pnpm db:studio
+```
+
+4️⃣ **Start Development Server**
+```bash
+pnpm dev
+```
+
+## 🛠️ Development
+
+### Available Commands
+
+| Command | Description |
+|---------|-------------|
+| `pnpm dev` | Start development server with hot reload |
+| `pnpm start` | Start production server |
+| `pnpm build` | Build the project |
+| `pnpm test` | Run test suite |
+| `pnpm test:watch` | Run tests in watch mode |
+| `pnpm db:generate` | Generate database migrations |
+| `pnpm db:migrate` | Run database migrations |
+| `pnpm db:studio` | Open Drizzle Studio |
+
+### Project Structure 📁
 
 ```
 src/
-├── config/         # Configuration files
-├── controllers/    # Request handlers
-├── plugins/        # Fastify plugins
-├── routes/         # Route definitions
-├── types/         # TypeScript type definitions
-└── utils/         # Utility functions
+├── config/         # ⚙️  Configuration & environment
+├── controllers/    # 🎮 Request handlers
+├── db/            # 💾 Database schemas & migrations
+├── plugins/       # 🔌 Fastify plugins
+├── routes/        # 🛣️  Route definitions
+├── types/         # 📝 TypeScript types
+└── utils/         # 🔧 Utility functions
 ```
 
-## API Documentation
+## 📚 Documentation
 
-The API documentation is available at `/documentation` when the server is running. You can access it at:
+### Environment Configuration
 
+The project uses environment-specific configuration files:
+
+| File | Purpose |
+|------|---------|
+| `.env.development` | Local development settings |
+| `.env.production` | Production environment settings |
+
+Key configuration variables:
+- `DATABASE_URL`: PostgreSQL connection string
+- `PORT`: Server port (default: 3000)
+- `HOST`: Server host
+
+### API Documentation
+
+Access the Swagger UI documentation at:
 ```
 http://localhost:3000/documentation
 ```
 
-## Configuration
+## 🧪 Testing
 
-Server configuration can be modified in `src/config/app.config.ts`. Key configurations include:
+Run the test suite:
+```bash
+# Single run
+pnpm test
 
-- Server port and host
-- Logging settings
-- Swagger documentation options
+# Watch mode
+pnpm test:watch
+```
 
-## License
+## 📦 Dependencies
+
+### Core
+- Fastify v4.25
+- TypeScript v5.3
+- Drizzle ORM v0.38
+- PostgreSQL
+
+### Development
+- Nodemon (hot reload)
+- ts-node (TypeScript execution)
+- tap (testing framework)
+- drizzle-kit (database tools)
+
+## 📄 License
 
 MIT
+
+---
+<div align="center">
+Made with ❤️ by [Your Name/Team]
+</div>
