@@ -4,9 +4,17 @@ import { ScoreController } from "../controllers/score.controller"
 const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
   const scoreController = new ScoreController(fastify)
   
-  // 获取所有分数记录
+  // 获取分数记录（支持按地址和游戏ID筛选）
   fastify.get('/', {
     schema: {
+      querystring: {
+        type: 'object',
+        properties: {
+          address: { type: 'string' },
+          gameId: { type: 'number', minimum: 1 },
+          limit: { type: 'number', minimum: 1, maximum: 100, default: 10 }
+        }
+      },
       response: {
         200: {
           type: 'array',
@@ -19,14 +27,15 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
               accountId: { type: 'number' },
               createdAt: { type: 'string' },
               accountAddress: { type: 'string' },
-              gameName: { type: 'string' },
+              gameName: { type: 'string' }
             }
           }
         }
       }
     }
-  }, async () => {
-    return scoreController.getAllScores()
+  }, async (request, reply) => {
+    const { address, gameId, limit = 10 } = request.query as { address?: string; gameId?: number; limit?: number }
+    return scoreController.getScores({ address, gameId, limit }, reply)
   })
 
   // 获取单个分数记录
@@ -97,6 +106,42 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
     return scoreController.createScore(accountId, gameId, score, reply)
   })
 
+  // 使用钱包地址创建分数记录
+  fastify.post<{
+    Body: {
+      gameId: number;
+      address: string;
+      score: number;
+    };
+  }>('/by-address', {
+    schema: {
+      body: {
+        type: 'object',
+        required: ['gameId', 'address', 'score'],
+        properties: {
+          gameId: { type: 'number', minimum: 1 },
+          address: { type: 'string', minLength: 1 },
+          score: { type: 'number', minimum: 0 }
+        }
+      },
+      response: {
+        200: {
+          type: 'object',
+          properties: {
+            id: { type: 'number' },
+            score: { type: 'number' },
+            gameId: { type: 'number' },
+            accountId: { type: 'number' },
+            createdAt: { type: 'string' }
+          }
+        }
+      }
+    }
+  }, async (request, reply) => {
+    const { gameId, address, score } = request.body
+    return scoreController.createScoreByAddress(address, gameId, score, reply)
+  })
+
   // 更新分数记录
   fastify.put<{
     Params: {
@@ -138,6 +183,30 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
     const { id } = request.params
     const { score } = request.body
     return scoreController.updateScore(id, score, reply)
+  })
+
+  // 根据地址更新分数
+  fastify.put<{
+    Body: {
+      address: string;
+      gameId: number;
+      score: number;
+    };
+  }>('/by-address', {
+    schema: {
+      body: {
+        type: 'object',
+        required: ['address', 'gameId', 'score'],
+        properties: {
+          address: { type: 'string' },
+          gameId: { type: 'number' },
+          score: { type: 'number' }
+        }
+      }
+    }
+  }, async (request, reply) => {
+    const { address, gameId, score: newScore } = request.body
+    return scoreController.updateScoreByAddress(address, gameId, newScore, reply)
   })
 
   // 删除分数记录

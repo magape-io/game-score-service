@@ -48,6 +48,26 @@ const accountRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
     return accountController.createAccount(address)
   })
 
+  // 根据地址查询账户
+  fastify.get<{
+    Querystring: {
+      address: string;
+    };
+  }>('/by-address', {
+    schema: {
+      querystring: {
+        type: 'object',
+        required: ['address'],
+        properties: {
+          address: { type: 'string' }
+        }
+      }
+    }
+  }, async (request, reply) => {
+    const { address } = request.query
+    return accountController.getAccountByAddress(address, reply)
+  })
+
   // 更新账户
   fastify.put<{
     Params: {

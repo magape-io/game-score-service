@@ -21,6 +21,17 @@ export class AccountController {
     return result;
   }
 
+  async getAccountByAddress(address: string, reply: FastifyReply) {
+    const result = await this.fastify.db
+      .select()
+      .from(account)
+      .where(eq(account.address, address));
+    if (!result.length) {
+      return false
+    }
+    return result[0];
+  }
+
   async createAccount(address: string) {
     return this.fastify.db.insert(account).values({
       address,
