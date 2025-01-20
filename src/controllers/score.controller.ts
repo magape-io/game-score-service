@@ -472,4 +472,44 @@ export class ScoreController {
       accountId,
     });
   }
+
+  // 获取指定数量的排名
+  async getRankings(
+    gameId: number | string,
+    propId: number,
+    rank: number = 10,
+    reply: FastifyReply
+  ) {
+    // 验证游戏是否存在
+    const gameExists = await this.fastify.db
+      .select()
+      .from(game)
+      .where(eq(game.id, parseInt(gameId.toString())));
+
+    if (!gameExists.length) {
+      reply.code(404);
+      throw new Error("Game not found");
+    }
+
+    // 获取排行榜
+    const rankings = await this.fastify.db
+      .select({
+        address: account.address,
+        quantity: score.score,
+        propId: sql<number>`${propId}`,
+        propName: sql<string>`${scoreName.name}`
+      })
+      .from(score)
+      .leftJoin(account, eq(score.accountId, account.id))
+      .leftJoin(scoreName, eq(score.gameId, scoreName.gameId))
+      .where(eq(score.gameId, parseInt(gameId.toString())))
+      .orderBy(desc(score.score))
+      .limit(rank);
+
+    return {
+      code: 200,
+      err: '',
+      data: rankings
+    };
+  }
 }

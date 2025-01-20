@@ -369,6 +369,60 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
     const { limit = 10 } = request.query
     return scoreController.getGameRanking(gameId, limit, reply)
   })
+
+  // 获取排名
+  fastify.post<{
+    Params: {
+      gameId: string;
+    };
+    Body: {
+      propId: number;
+      rank?: number;
+    };
+  }>('/rank/:gameId', {
+    schema: {
+      params: {
+        type: 'object',
+        required: ['gameId'],
+        properties: {
+          gameId: { type: 'string' }
+        }
+      },
+      body: {
+        type: 'object',
+        required: ['propId'],
+        properties: {
+          propId: { type: 'number', minimum: 1 },
+          rank: { type: 'number', minimum: 1, default: 10 }
+        }
+      },
+      response: {
+        200: {
+          type: 'object',
+          properties: {
+            code: { type: 'number' },
+            err: { type: 'string' },
+            data: {
+              type: 'array',
+              items: {
+                type: 'object',
+                properties: {
+                  address: { type: 'string' },
+                  quantity: { type: 'number' },
+                  propName: { type: 'string' },
+                  propId: { type: 'number' }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }, async (request, reply) => {
+    const { gameId } = request.params;
+    const { propId, rank = 10 } = request.body;
+    return scoreController.getRankings(gameId, propId, rank, reply);
+  });
 }
 
 export default scoreRoutes
