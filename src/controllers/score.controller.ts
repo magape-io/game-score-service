@@ -218,7 +218,11 @@ export class ScoreController {
       .orderBy(desc(score.score))
       .limit(limit);
 
-    return rankings;
+    return {
+      code: 200,
+      err: "",
+      data: rankings
+    };
   }
 
   async getScores({ 
@@ -304,12 +308,23 @@ export class ScoreController {
       }
     }
 
-    const result = await query
-      .where(conditions.length > 0 ? and(...conditions) : undefined)
-      .orderBy(desc(score.updatedAt))
-      .limit(limit);
+    const [result, total] = await Promise.all([
+      query
+        .where(conditions.length > 0 ? and(...conditions) : undefined)
+        .orderBy(desc(score.updatedAt))
+        .limit(limit),
+      this.fastify.db
+        .select({ count: sql<number>`count(*)` })
+        .from(score)
+        .where(conditions.length > 0 ? and(...conditions) : undefined)
+    ]);
 
-    return result;
+    return {
+      code: 200,
+      err: "",
+      data: result,
+      total: total[0].count
+    };
   }
 
   async getScoresByAddress(address: string, reply: FastifyReply) {

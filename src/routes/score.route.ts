@@ -29,19 +29,27 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
       },
       response: {
         200: {
-          type: 'array',
-          items: {
-            type: 'object',
-            properties: {
-              id: { type: 'number' },
-              score: { type: 'number' },
-              gameId: { type: 'number' },
-              accountId: { type: 'number' },
-              createdAt: { type: 'string' },
-              accountAddress: { type: 'string' },
-              gameName: { type: 'string' },
-              updatedAt: { type: 'string' }
-            }
+          type: 'object',
+          properties: {
+            code: { type: 'number' },
+            err: { type: 'string' },
+            data: {
+              type: 'array',
+              items: {
+                type: 'object',
+                properties: {
+                  id: { type: 'number' },
+                  score: { type: 'number' },
+                  gameId: { type: 'number' },
+                  accountId: { type: 'number' },
+                  createdAt: { type: 'string' },
+                  accountAddress: { type: 'string' },
+                  gameName: { type: 'string' },
+                  updatedAt: { type: 'string' }
+                }
+              }
+            },
+            total: { type: 'number' }
           }
         }
       }
@@ -75,11 +83,18 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
         200: {
           type: 'object',
           properties: {
-            id: { type: 'number' },
-            score: { type: 'number' },
-            gameId: { type: 'number' },
-            accountId: { type: 'number' },
-            createdAt: { type: 'string' }
+            code: { type: 'number' },
+            err: { type: 'string' },
+            data: {
+              type: 'object',
+              properties: {
+                id: { type: 'number' },
+                score: { type: 'number' },
+                gameId: { type: 'number' },
+                accountId: { type: 'number' },
+                createdAt: { type: 'string' }
+              }
+            }
           }
         }
       }
@@ -111,11 +126,18 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
         200: {
           type: 'object',
           properties: {
-            id: { type: 'number' },
-            gameId: { type: 'number' },
-            accountId: { type: 'number' },
-            score: { type: 'number' },
-            createdAt: { type: 'string' }
+            code: { type: 'number' },
+            err: { type: 'string' },
+            data: {
+              type: 'object',
+              properties: {
+                id: { type: 'number' },
+                gameId: { type: 'number' },
+                accountId: { type: 'number' },
+                score: { type: 'number' },
+                createdAt: { type: 'string' }
+              }
+            }
           }
         }
       }
@@ -147,11 +169,18 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
         200: {
           type: 'object',
           properties: {
-            id: { type: 'number' },
-            score: { type: 'number' },
-            gameId: { type: 'number' },
-            accountId: { type: 'number' },
-            createdAt: { type: 'string' }
+            code: { type: 'number' },
+            err: { type: 'string' },
+            data: {
+              type: 'object',
+              properties: {
+                id: { type: 'number' },
+                score: { type: 'number' },
+                gameId: { type: 'number' },
+                accountId: { type: 'number' },
+                createdAt: { type: 'string' }
+              }
+            }
           }
         }
       }
@@ -189,11 +218,18 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
         200: {
           type: 'object',
           properties: {
-            id: { type: 'number' },
-            gameId: { type: 'number' },
-            accountId: { type: 'number' },
-            score: { type: 'number' },
-            createdAt: { type: 'string' }
+            code: { type: 'number' },
+            err: { type: 'string' },
+            data: {
+              type: 'object',
+              properties: {
+                id: { type: 'number' },
+                gameId: { type: 'number' },
+                accountId: { type: 'number' },
+                score: { type: 'number' },
+                createdAt: { type: 'string' }
+              }
+            }
           }
         }
       }
@@ -221,6 +257,25 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
           gameId: { type: 'number' },
           score: { type: 'number' }
         }
+      },
+      response: {
+        200: {
+          type: 'object',
+          properties: {
+            code: { type: 'number' },
+            err: { type: 'string' },
+            data: {
+              type: 'object',
+              properties: {
+                id: { type: 'number' },
+                gameId: { type: 'number' },
+                accountId: { type: 'number' },
+                score: { type: 'number' },
+                createdAt: { type: 'string' }
+              }
+            }
+          }
+        }
       }
     }
   }, async (request, reply) => {
@@ -246,11 +301,18 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
         200: {
           type: 'object',
           properties: {
-            id: { type: 'number' },
-            gameId: { type: 'number' },
-            accountId: { type: 'number' },
-            score: { type: 'number' },
-            createdAt: { type: 'string' }
+            code: { type: 'number' },
+            err: { type: 'string' },
+            data: {
+              type: 'object',
+              properties: {
+                id: { type: 'number' },
+                gameId: { type: 'number' },
+                accountId: { type: 'number' },
+                score: { type: 'number' },
+                createdAt: { type: 'string' }
+              }
+            }
           }
         }
       }
@@ -285,15 +347,22 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
       },
       response: {
         200: {
-          type: 'array',
-          items: {
-            type: 'object',
-            properties: {
-              accountId: { type: 'number' },
-              accountAddress: { type: 'string' },
-              score: { type: 'number' },
-              gameId: { type: 'number' },
-              createdAt: { type: 'string' }
+          type: 'object',
+          properties: {
+            code: { type: 'number' },
+            err: { type: 'string' },
+            data: {
+              type: 'array',
+              items: {
+                type: 'object',
+                properties: {
+                  accountId: { type: 'number' },
+                  accountAddress: { type: 'string' },
+                  score: { type: 'number' },
+                  gameId: { type: 'number' },
+                  createdAt: { type: 'string' }
+                }
+              }
             }
           }
         }
