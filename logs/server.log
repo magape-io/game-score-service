@@ -4920,3 +4920,5 @@
 {"level":30,"time":1737364738254,"pid":46225,"hostname":"MacBook-Pro-2.local","reqId":"req-d","res":{"statusCode":200},"responseTime":20.671916961669922,"msg":"request completed"}
 {"level":30,"time":1737364769223,"pid":46544,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:3000"}
 {"level":30,"time":1737364769224,"pid":46544,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
+{"level":30,"time":1737364996571,"pid":46544,"hostname":"MacBook-Pro-2.local","reqId":"req-1","req":{"method":"GET","url":"/scores?startTime=1737353400000","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":64533},"msg":"incoming request"}
+{"level":30,"time":1737364996686,"pid":46544,"hostname":"MacBook-Pro-2.local","reqId":"req-1","res":{"statusCode":200},"responseTime":113.90958404541016,"msg":"request completed"}

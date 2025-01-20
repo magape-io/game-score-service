@@ -35,27 +35,25 @@ https://tcsc8wckk4kgwk000kkkoswg.whyindian.site/scores?startTime=2025-01-20T05:2
 
 ```json
 {
+  "code": 200,
+  "err": "",
   "data": [
     {
-      "id": 13,
-      "score": 40,
-      "gameId": 3,
-      "accountId": 28,
-      "createdAt": "2025-01-20T05:28:08.26159Z",
-      "accountAddress": "0x897575",
-      "gameName": "merge_game",
-      "updatedAt": "2025-01-20T05:29:03.267581Z"
+      "address": "0x897575888",
+      "quantity": 18,
+      "propName": "score",
+      "propId": 1
     }
   ],
   "total": 1
 }
 ```
 
-## 2. 获取游戏排行榜
+## 2. 获取指定数量排名（POST）
 
 ### 接口地址
 ```
-GET /scores/rankings/{gameId}
+POST /scores/rank/{gameId}
 ```
 
 ### 路径参数
@@ -64,33 +62,37 @@ GET /scores/rankings/{gameId}
 |--------|---------|---------|--------|
 | gameId | 游戏ID  | 是      | 3      |
 
-### 查询参数
+### 请求体参数
 
 | 参数名 | 说明         | 是否必填 | 示例值 | 备注 |
 |-------|--------------|---------|--------|------|
-| limit | 返回排名数量 | 否      | 10     | 默认10，最大100 |
+| propId | 属性ID | 是 | 1 | score_name表中的ID |
+| rank | 返回排名数量 | 否 | 10 | 不填返回所有 |
 
 ### 请求示例
 
-```
-https://tcsc8wckk4kgwk000kkkoswg.whyindian.site/scores/rankings/3?limit=10
+```bash
+curl -X POST https://tcsc8wckk4kgwk000kkkoswg.whyindian.site/scores/rank/3 \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "propId": 1,
+    "rank": 5
+  }'
 ```
 
 ### 返回示例
 
 ```json
-[
-  {
-    "accountId": 28,
-    "accountAddress": "0x897575",
-    "score": 40,
-    "gameId": 3,
-    "createdAt": "2025-01-20T05:28:08.26159Z"
-  }
-]
+{
+  "code": 200,
+  "err": "",
+  "data": [
+    {
+      "address": "0x897575",
+      "quantity": 40,
+      "propId": 1,
+      "propName": "Score"
+    }
+  ]
+}
 ```
-
-### 说明
-- 返回结果按分数降序排列（从高到低）
-- 每个游戏ID都有独立的排行榜
-- 如果游戏ID不存在，会返回404错误

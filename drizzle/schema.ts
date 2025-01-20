@@ -1,8 +1,6 @@
 import { pgTable, serial, text, timestamp, foreignKey, integer, unique } from "drizzle-orm/pg-core"
 import { sql } from "drizzle-orm"
 
-
-
 export const game = pgTable("game", {
 	id: serial().primaryKey().notNull(),
 	name: text().notNull(),
@@ -27,6 +25,19 @@ export const score = pgTable("score", {
 			foreignColumns: [account.id],
 			name: "score_account_id_account_id_fk"
 		}),
+]);
+
+export const scoreName = pgTable("score_name", {
+  id: serial().primaryKey().notNull(),
+  gameId: integer("game_id").notNull(),
+  name: text().notNull(),
+  createdAt: timestamp("created_at", { mode: 'string' }).defaultNow(),
+}, (table) => [
+  foreignKey({
+      columns: [table.gameId],
+      foreignColumns: [game.id],
+      name: "score_name_game_id_game_id_fk"
+    }),
 ]);
 
 export const account = pgTable("account", {
