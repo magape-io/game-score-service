@@ -27,6 +27,19 @@ export const score = pgTable("score", {
 		}),
 ]);
 
+export const scoreName = pgTable("score_name", {
+  id: serial().primaryKey().notNull(),
+  gameId: integer("game_id").notNull(),
+  name: text().notNull(),
+  createdAt: timestamp("created_at", { mode: 'string' }).defaultNow(),
+}, (table) => [
+  foreignKey({
+      columns: [table.gameId],
+      foreignColumns: [game.id],
+      name: "score_name_game_id_game_id_fk"
+    }),
+]);
+
 export const account = pgTable("account", {
 	id: serial().primaryKey().notNull(),
 	address: text().notNull(),

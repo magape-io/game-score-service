@@ -36,6 +36,20 @@
       "when": 1737350620042,
       "tag": "0004_nebulous_amphibian",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1737362850682,
+      "tag": "0005_magical_black_tarantula",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1737363086894,
+      "tag": "0006_overconfident_moon_knight",
+      "breakpoints": true
     }
   ]
 }

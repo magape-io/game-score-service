@@ -1,5 +1,5 @@
 import { FastifyInstance, FastifyReply } from "fastify";
-import { score, game, account } from "../db/schema";
+import { score, game, account, scoreName } from "../db/schema";
 import { eq, desc, and, SQL, sql } from "drizzle-orm";
 
 export class ScoreController {
@@ -242,18 +242,14 @@ export class ScoreController {
   ) {
     let query = this.fastify.db
       .select({
-        id: score.id,
-        score: score.score,
-        gameId: score.gameId,
-        accountId: score.accountId,
-        createdAt: score.createdAt,
-        accountAddress: account.address,
-        gameName: game.name,
-        updatedAt: score.updatedAt
+        address: account.address,
+        quantity: score.score,
+        propName: scoreName.name,
+        propId: scoreName.id
       })
       .from(score)
       .leftJoin(account, eq(score.accountId, account.id))
-      .leftJoin(game, eq(score.gameId, game.id));
+      .leftJoin(scoreName, eq(score.gameId, scoreName.gameId));
 
     const conditions: SQL[] = [];
 
@@ -264,15 +260,12 @@ export class ScoreController {
     if (gameId) {
       conditions.push(eq(score.gameId, gameId));
     }
-    console.log('startTime, endTime',startTime, endTime);
 
     if (startTime) {
       let startDate: string;
       try {
-        // Try parsing as ISO string first
         const date = new Date(startTime);
         if (isNaN(date.getTime())) {
-          // If invalid, try parsing as milliseconds
           const timestamp = parseInt(startTime.toString());
           if (isNaN(timestamp)) {
             throw new Error('Invalid date format');
@@ -290,10 +283,8 @@ export class ScoreController {
     if (endTime) {
       let endDate: string;
       try {
-        // Try parsing as ISO string first
         const date = new Date(endTime);
         if (isNaN(date.getTime())) {
-          // If invalid, try parsing as milliseconds
           const timestamp = parseInt(endTime.toString());
           if (isNaN(timestamp)) {
             throw new Error('Invalid date format');
@@ -349,12 +340,14 @@ export class ScoreController {
         createdAt: score.createdAt,
         accountAddress: account.address,
         gameName: game.name,
+        scoreName: scoreName.name
       })
       .from(score)
       .where(eq(score.accountId, accountId))
       .leftJoin(account, eq(score.accountId, account.id))
       .leftJoin(game, eq(score.gameId, game.id))
-      .orderBy(desc(score.createdAt));
+      .orderBy(desc(score.createdAt))
+      .leftJoin(scoreName, eq(score.gameId, scoreName.id))
 
     return result;
   }
