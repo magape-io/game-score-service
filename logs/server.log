@@ -4575,3 +4575,139 @@
 {"level":30,"time":1737354392421,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-6","res":{"statusCode":200},"responseTime":559.0368340015411,"msg":"request completed"}
 {"level":30,"time":1737354395743,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-7","req":{"method":"GET","url":"/scores","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":58692},"msg":"incoming request"}
 {"level":30,"time":1737354395758,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-7","res":{"statusCode":200},"responseTime":14.621292114257812,"msg":"request completed"}
+{"level":30,"time":1737354882047,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-8","req":{"method":"OPTIONS","url":"/gameStats","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":63303},"msg":"incoming request"}
+{"level":30,"time":1737354882091,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-8","res":{"statusCode":204},"responseTime":31.76199996471405,"msg":"request completed"}
+{"level":30,"time":1737354882093,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-9","req":{"method":"OPTIONS","url":"/dailyTasks","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":63304},"msg":"incoming request"}
+{"level":30,"time":1737354882095,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-9","res":{"statusCode":204},"responseTime":0.6429580450057983,"msg":"request completed"}
+{"level":30,"time":1737354882099,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-a","req":{"method":"GET","url":"/gameStats","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":63303},"msg":"incoming request"}
+{"level":30,"time":1737354882099,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-a","msg":"Route GET:/gameStats not found"}
+{"level":30,"time":1737354882101,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-a","res":{"statusCode":404},"responseTime":1.6323750019073486,"msg":"request completed"}
+{"level":30,"time":1737354882101,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-b","req":{"method":"GET","url":"/dailyTasks","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":63304},"msg":"incoming request"}
+{"level":30,"time":1737354882101,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-b","msg":"Route GET:/dailyTasks not found"}
+{"level":30,"time":1737354882106,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-b","res":{"statusCode":404},"responseTime":5.319916009902954,"msg":"request completed"}
+{"level":30,"time":1737354882109,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-c","req":{"method":"OPTIONS","url":"/playedGames","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":63307},"msg":"incoming request"}
+{"level":30,"time":1737354882110,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-c","res":{"statusCode":204},"responseTime":0.1706249713897705,"msg":"request completed"}
+{"level":30,"time":1737354882110,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-d","req":{"method":"OPTIONS","url":"/seasonRewards","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":63308},"msg":"incoming request"}
+{"level":30,"time":1737354882111,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-d","res":{"statusCode":204},"responseTime":0.2857919931411743,"msg":"request completed"}
+{"level":30,"time":1737354882114,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-e","req":{"method":"GET","url":"/playedGames","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":63307},"msg":"incoming request"}
+{"level":30,"time":1737354882115,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-e","msg":"Route GET:/playedGames not found"}
+{"level":30,"time":1737354882116,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-e","res":{"statusCode":404},"responseTime":0.9808330535888672,"msg":"request completed"}
+{"level":30,"time":1737354882117,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-f","req":{"method":"GET","url":"/seasonRewards","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":63308},"msg":"incoming request"}
+{"level":30,"time":1737354882117,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-f","msg":"Route GET:/seasonRewards not found"}
+{"level":30,"time":1737354882119,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-f","res":{"statusCode":404},"responseTime":2.2041670083999634,"msg":"request completed"}
+{"level":30,"time":1737354962687,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-g","req":{"method":"OPTIONS","url":"/gameStats","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":63956},"msg":"incoming request"}
+{"level":30,"time":1737354962704,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-g","res":{"statusCode":204},"responseTime":9.133749961853027,"msg":"request completed"}
+{"level":30,"time":1737354962705,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-h","req":{"method":"OPTIONS","url":"/dailyTasks","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":63957},"msg":"incoming request"}
+{"level":30,"time":1737354962709,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-h","res":{"statusCode":204},"responseTime":3.946125030517578,"msg":"request completed"}
+{"level":30,"time":1737354962710,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-i","req":{"method":"OPTIONS","url":"/playedGames","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":63960},"msg":"incoming request"}
+{"level":30,"time":1737354962711,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-i","res":{"statusCode":204},"responseTime":1.1360830068588257,"msg":"request completed"}
+{"level":30,"time":1737354962711,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-j","req":{"method":"OPTIONS","url":"/seasonRewards","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":63961},"msg":"incoming request"}
+{"level":30,"time":1737354962712,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-j","res":{"statusCode":204},"responseTime":0.15312504768371582,"msg":"request completed"}
+{"level":30,"time":1737354962729,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-k","req":{"method":"GET","url":"/gameStats","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":63957},"msg":"incoming request"}
+{"level":30,"time":1737354962729,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-k","msg":"Route GET:/gameStats not found"}
+{"level":30,"time":1737354962730,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-k","res":{"statusCode":404},"responseTime":1.5644999742507935,"msg":"request completed"}
+{"level":30,"time":1737354962734,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-l","req":{"method":"GET","url":"/dailyTasks","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":63961},"msg":"incoming request"}
+{"level":30,"time":1737354962734,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-l","msg":"Route GET:/dailyTasks not found"}
+{"level":30,"time":1737354962734,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-l","res":{"statusCode":404},"responseTime":0.1620420217514038,"msg":"request completed"}
+{"level":30,"time":1737354962737,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-m","req":{"method":"GET","url":"/playedGames","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":63960},"msg":"incoming request"}
+{"level":30,"time":1737354962737,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-m","msg":"Route GET:/playedGames not found"}
+{"level":30,"time":1737354962737,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-m","res":{"statusCode":404},"responseTime":0.1644580364227295,"msg":"request completed"}
+{"level":30,"time":1737354962737,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-n","req":{"method":"GET","url":"/seasonRewards","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":63956},"msg":"incoming request"}
+{"level":30,"time":1737354962737,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-n","msg":"Route GET:/seasonRewards not found"}
+{"level":30,"time":1737354962737,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-n","res":{"statusCode":404},"responseTime":0.08520805835723877,"msg":"request completed"}
+{"level":30,"time":1737355077862,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-o","req":{"method":"OPTIONS","url":"/gameStats","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":64769},"msg":"incoming request"}
+{"level":30,"time":1737355077864,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-o","res":{"statusCode":204},"responseTime":0.6550829410552979,"msg":"request completed"}
+{"level":30,"time":1737355077864,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-p","req":{"method":"OPTIONS","url":"/dailyTasks","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":64771},"msg":"incoming request"}
+{"level":30,"time":1737355077864,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-p","res":{"statusCode":204},"responseTime":0.07720804214477539,"msg":"request completed"}
+{"level":30,"time":1737355077864,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-q","req":{"method":"OPTIONS","url":"/playedGames","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":64772},"msg":"incoming request"}
+{"level":30,"time":1737355077865,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-q","res":{"statusCode":204},"responseTime":0.6621249914169312,"msg":"request completed"}
+{"level":30,"time":1737355077865,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-r","req":{"method":"OPTIONS","url":"/seasonRewards","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":64773},"msg":"incoming request"}
+{"level":30,"time":1737355077865,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-r","res":{"statusCode":204},"responseTime":0.05258297920227051,"msg":"request completed"}
+{"level":30,"time":1737355077866,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-s","req":{"method":"GET","url":"/gameStats","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":64769},"msg":"incoming request"}
+{"level":30,"time":1737355077866,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-s","msg":"Route GET:/gameStats not found"}
+{"level":30,"time":1737355077866,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-s","res":{"statusCode":404},"responseTime":0.330625057220459,"msg":"request completed"}
+{"level":30,"time":1737355077866,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-t","req":{"method":"GET","url":"/dailyTasks","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":64771},"msg":"incoming request"}
+{"level":30,"time":1737355077866,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-t","msg":"Route GET:/dailyTasks not found"}
+{"level":30,"time":1737355077866,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-t","res":{"statusCode":404},"responseTime":0.26887500286102295,"msg":"request completed"}
+{"level":30,"time":1737355077867,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-u","req":{"method":"GET","url":"/playedGames","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":64773},"msg":"incoming request"}
+{"level":30,"time":1737355077867,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-u","msg":"Route GET:/playedGames not found"}
+{"level":30,"time":1737355077867,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-u","res":{"statusCode":404},"responseTime":0.19987499713897705,"msg":"request completed"}
+{"level":30,"time":1737355077867,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-v","req":{"method":"GET","url":"/seasonRewards","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":64772},"msg":"incoming request"}
+{"level":30,"time":1737355077867,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-v","msg":"Route GET:/seasonRewards not found"}
+{"level":30,"time":1737355077867,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-v","res":{"statusCode":404},"responseTime":0.3999580144882202,"msg":"request completed"}
+{"level":30,"time":1737355078716,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-w","req":{"method":"GET","url":"/gameStats","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":64783},"msg":"incoming request"}
+{"level":30,"time":1737355078717,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-w","msg":"Route GET:/gameStats not found"}
+{"level":30,"time":1737355078718,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-w","res":{"statusCode":404},"responseTime":1.0495840311050415,"msg":"request completed"}
+{"level":30,"time":1737355078719,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-x","req":{"method":"GET","url":"/dailyTasks","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":64786},"msg":"incoming request"}
+{"level":30,"time":1737355078719,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-x","msg":"Route GET:/dailyTasks not found"}
+{"level":30,"time":1737355078724,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-x","res":{"statusCode":404},"responseTime":4.935458064079285,"msg":"request completed"}
+{"level":30,"time":1737355078724,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-y","req":{"method":"GET","url":"/playedGames","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":64788},"msg":"incoming request"}
+{"level":30,"time":1737355078724,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-y","msg":"Route GET:/playedGames not found"}
+{"level":30,"time":1737355078725,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-y","res":{"statusCode":404},"responseTime":0.4134169816970825,"msg":"request completed"}
+{"level":30,"time":1737355078725,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-z","req":{"method":"GET","url":"/seasonRewards","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":64789},"msg":"incoming request"}
+{"level":30,"time":1737355078725,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-z","msg":"Route GET:/seasonRewards not found"}
+{"level":30,"time":1737355078725,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-z","res":{"statusCode":404},"responseTime":0.22633302211761475,"msg":"request completed"}
+{"level":30,"time":1737355310536,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-10","req":{"method":"OPTIONS","url":"/gameStats","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":50219},"msg":"incoming request"}
+{"level":30,"time":1737355310538,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-10","res":{"statusCode":204},"responseTime":1.4505000114440918,"msg":"request completed"}
+{"level":30,"time":1737355310538,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-11","req":{"method":"OPTIONS","url":"/dailyTasks","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":50221},"msg":"incoming request"}
+{"level":30,"time":1737355310538,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-11","res":{"statusCode":204},"responseTime":0.11150002479553223,"msg":"request completed"}
+{"level":30,"time":1737355310539,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-12","req":{"method":"GET","url":"/gameStats","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":50219},"msg":"incoming request"}
+{"level":30,"time":1737355310539,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-12","msg":"Route GET:/gameStats not found"}
+{"level":30,"time":1737355310539,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-12","res":{"statusCode":404},"responseTime":0.30495893955230713,"msg":"request completed"}
+{"level":30,"time":1737355310539,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-13","req":{"method":"OPTIONS","url":"/playedGames","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":50223},"msg":"incoming request"}
+{"level":30,"time":1737355310539,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-13","res":{"statusCode":204},"responseTime":0.08574998378753662,"msg":"request completed"}
+{"level":30,"time":1737355310539,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-14","req":{"method":"OPTIONS","url":"/seasonRewards","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":50224},"msg":"incoming request"}
+{"level":30,"time":1737355310540,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-14","res":{"statusCode":204},"responseTime":0.5242080688476562,"msg":"request completed"}
+{"level":30,"time":1737355310541,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-15","req":{"method":"GET","url":"/seasonRewards","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":50219},"msg":"incoming request"}
+{"level":30,"time":1737355310541,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-15","msg":"Route GET:/seasonRewards not found"}
+{"level":30,"time":1737355310541,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-15","res":{"statusCode":404},"responseTime":0.33899998664855957,"msg":"request completed"}
+{"level":30,"time":1737355310541,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-16","req":{"method":"GET","url":"/playedGames","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":50223},"msg":"incoming request"}
+{"level":30,"time":1737355310541,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-16","msg":"Route GET:/playedGames not found"}
+{"level":30,"time":1737355310541,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-16","res":{"statusCode":404},"responseTime":0.07954204082489014,"msg":"request completed"}
+{"level":30,"time":1737355310541,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-17","req":{"method":"GET","url":"/dailyTasks","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":50221},"msg":"incoming request"}
+{"level":30,"time":1737355310541,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-17","msg":"Route GET:/dailyTasks not found"}
+{"level":30,"time":1737355310541,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-17","res":{"statusCode":404},"responseTime":0.04441702365875244,"msg":"request completed"}
+{"level":30,"time":1737355313768,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-18","req":{"method":"GET","url":"/gameStats","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":50221},"msg":"incoming request"}
+{"level":30,"time":1737355313768,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-18","msg":"Route GET:/gameStats not found"}
+{"level":30,"time":1737355313769,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-18","res":{"statusCode":404},"responseTime":0.840999960899353,"msg":"request completed"}
+{"level":30,"time":1737355313769,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-19","req":{"method":"GET","url":"/dailyTasks","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":50223},"msg":"incoming request"}
+{"level":30,"time":1737355313769,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-19","msg":"Route GET:/dailyTasks not found"}
+{"level":30,"time":1737355313770,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-19","res":{"statusCode":404},"responseTime":0.5414170026779175,"msg":"request completed"}
+{"level":30,"time":1737355313770,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1a","req":{"method":"GET","url":"/playedGames","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":50219},"msg":"incoming request"}
+{"level":30,"time":1737355313771,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1a","msg":"Route GET:/playedGames not found"}
+{"level":30,"time":1737355313771,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1a","res":{"statusCode":404},"responseTime":0.3158750534057617,"msg":"request completed"}
+{"level":30,"time":1737355313771,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1b","req":{"method":"GET","url":"/seasonRewards","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":50224},"msg":"incoming request"}
+{"level":30,"time":1737355313771,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1b","msg":"Route GET:/seasonRewards not found"}
+{"level":30,"time":1737355313771,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1b","res":{"statusCode":404},"responseTime":0.1902080774307251,"msg":"request completed"}
+{"level":30,"time":1737355315938,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1c","req":{"method":"OPTIONS","url":"/gameStats","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":50224},"msg":"incoming request"}
+{"level":30,"time":1737355315939,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1c","res":{"statusCode":204},"responseTime":0.6582499742507935,"msg":"request completed"}
+{"level":30,"time":1737355315939,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1d","req":{"method":"OPTIONS","url":"/dailyTasks","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":50219},"msg":"incoming request"}
+{"level":30,"time":1737355315940,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1d","res":{"statusCode":204},"responseTime":0.12004196643829346,"msg":"request completed"}
+{"level":30,"time":1737355315940,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1e","req":{"method":"OPTIONS","url":"/playedGames","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":50223},"msg":"incoming request"}
+{"level":30,"time":1737355315940,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1e","res":{"statusCode":204},"responseTime":0.39408302307128906,"msg":"request completed"}
+{"level":30,"time":1737355315941,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1f","req":{"method":"GET","url":"/gameStats","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":50224},"msg":"incoming request"}
+{"level":30,"time":1737355315942,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1f","msg":"Route GET:/gameStats not found"}
+{"level":30,"time":1737355315943,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1f","res":{"statusCode":404},"responseTime":2.6602920293807983,"msg":"request completed"}
+{"level":30,"time":1737355315943,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1g","req":{"method":"GET","url":"/dailyTasks","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":50219},"msg":"incoming request"}
+{"level":30,"time":1737355315944,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1g","msg":"Route GET:/dailyTasks not found"}
+{"level":30,"time":1737355315944,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1g","res":{"statusCode":404},"responseTime":0.39566707611083984,"msg":"request completed"}
+{"level":30,"time":1737355315944,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1h","req":{"method":"OPTIONS","url":"/seasonRewards","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":50221},"msg":"incoming request"}
+{"level":30,"time":1737355315944,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1h","res":{"statusCode":204},"responseTime":0.1644589900970459,"msg":"request completed"}
+{"level":30,"time":1737355315945,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1i","req":{"method":"GET","url":"/playedGames","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":50223},"msg":"incoming request"}
+{"level":30,"time":1737355315945,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1i","msg":"Route GET:/playedGames not found"}
+{"level":30,"time":1737355315945,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1i","res":{"statusCode":404},"responseTime":0.09987497329711914,"msg":"request completed"}
+{"level":30,"time":1737355315952,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1j","req":{"method":"GET","url":"/seasonRewards","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":50221},"msg":"incoming request"}
+{"level":30,"time":1737355315952,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1j","msg":"Route GET:/seasonRewards not found"}
+{"level":30,"time":1737355315953,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1j","res":{"statusCode":404},"responseTime":0.3269169330596924,"msg":"request completed"}
+{"level":30,"time":1737355318539,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1k","req":{"method":"GET","url":"/gameStats","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":50221},"msg":"incoming request"}
+{"level":30,"time":1737355318540,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1k","msg":"Route GET:/gameStats not found"}
+{"level":30,"time":1737355318552,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1k","res":{"statusCode":404},"responseTime":12.777665972709656,"msg":"request completed"}
+{"level":30,"time":1737355318552,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1l","req":{"method":"GET","url":"/dailyTasks","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":50223},"msg":"incoming request"}
+{"level":30,"time":1737355318552,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1l","msg":"Route GET:/dailyTasks not found"}
+{"level":30,"time":1737355318553,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1l","res":{"statusCode":404},"responseTime":0.41954100131988525,"msg":"request completed"}
+{"level":30,"time":1737355318553,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1m","req":{"method":"GET","url":"/playedGames","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":50219},"msg":"incoming request"}
+{"level":30,"time":1737355318553,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1m","msg":"Route GET:/playedGames not found"}
+{"level":30,"time":1737355318553,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1m","res":{"statusCode":404},"responseTime":0.2848329544067383,"msg":"request completed"}
+{"level":30,"time":1737355318554,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1n","req":{"method":"GET","url":"/seasonRewards","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":50224},"msg":"incoming request"}
+{"level":30,"time":1737355318554,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1n","msg":"Route GET:/seasonRewards not found"}
+{"level":30,"time":1737355318554,"pid":99110,"hostname":"MacBook-Pro-2.local","reqId":"req-1n","res":{"statusCode":404},"responseTime":0.758417010307312,"msg":"request completed"}
