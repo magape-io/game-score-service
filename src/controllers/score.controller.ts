@@ -1,6 +1,6 @@
 import { FastifyInstance, FastifyReply } from "fastify";
 import { score, game, account } from "../db/schema";
-import { eq, desc, and, SQL } from "drizzle-orm";
+import { eq, desc, and, SQL, sql } from "drizzle-orm";
 
 export class ScoreController {
   constructor(private fastify: FastifyInstance) {}
@@ -125,6 +125,7 @@ export class ScoreController {
       .update(score)
       .set({
         score: scoreValue,
+        updatedAt: sql`CURRENT_TIMESTAMP`
       })
       .where(eq(score.id, parseInt(id.toString())))
       .returning();
@@ -331,7 +332,18 @@ export class ScoreController {
   }
 
   async updateScoreByAddress(address: string, gameId: number, newScore: number, reply: FastifyReply) {
-    // First find the account by address
+    // First check if game exists
+    const gameResult = await this.fastify.db
+      .select()
+      .from(game)
+      .where(eq(game.id, gameId));
+
+    if (!gameResult.length) {
+      reply.code(404);
+      throw new Error(`Game with id ${gameId} not found`);
+    }
+
+    // Then find the account by address
     const accountResult = await this.fastify.db
       .select()
       .from(account)
@@ -364,7 +376,10 @@ export class ScoreController {
       // If existing score exists, update it
       return this.fastify.db
         .update(score)
-        .set({ score: newScore })
+        .set({ 
+          score: newScore,
+          updatedAt: sql`CURRENT_TIMESTAMP`
+        })
         .where(eq(score.id, existingScore[0].id));
     }
   }

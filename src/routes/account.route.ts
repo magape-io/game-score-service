@@ -43,8 +43,17 @@ const accountRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
         }
       }
     }
-  }, async (request) => {
+  }, async (request, reply) => {
     const { address } = request.body
+    
+    // 先检查账户是否存在
+    const existingAccount = await accountController.getAccountByAddress(address, reply)
+    console.log('existingAccount', existingAccount)
+    if (existingAccount ) {
+      return existingAccount
+    }
+    
+    // 如果账户不存在，创建新账户
     return accountController.createAccount(address)
   })
 
@@ -95,6 +104,7 @@ const accountRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
   }, async (request, reply) => {
     const { id } = request.params
     const { address } = request.body
+    console.log('updateAccount', id, address)
     return accountController.updateAccount(id, address, reply)
   })
 

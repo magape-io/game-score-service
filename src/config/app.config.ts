@@ -23,7 +23,7 @@ export const appConfig: {
   };
 } = {
   server: {
-    port: 3000,
+    port: 4000,
     host: '0.0.0.0'
   },
   logger: {
@@ -38,7 +38,7 @@ export const appConfig: {
         description: 'Testing the Fastify swagger API',
         version: '0.1.0'
       },
-      host: 'localhost:3000',
+      host: 'localhost:4000',
       schemes: ['http'],
       consumes: ['application/json'],
       produces: ['application/json']

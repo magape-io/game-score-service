@@ -1,6 +1,8 @@
 import { pgTable, serial, text, timestamp, foreignKey, integer, unique } from "drizzle-orm/pg-core"
 import { sql } from "drizzle-orm"
 
+
+
 export const game = pgTable("game", {
 	id: serial().primaryKey().notNull(),
 	name: text().notNull(),
