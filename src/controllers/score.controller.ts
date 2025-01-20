@@ -224,11 +224,15 @@ export class ScoreController {
   async getScores({ 
     address, 
     gameId, 
-    limit = 10 
+    limit = 10,
+    startTime,
+    endTime 
   }: { 
     address?: string; 
     gameId?: number; 
-    limit?: number 
+    limit?: number;
+    startTime?: string | number;
+    endTime?: string | number;
   }, 
     reply: FastifyReply
   ) {
@@ -241,6 +245,7 @@ export class ScoreController {
         createdAt: score.createdAt,
         accountAddress: account.address,
         gameName: game.name,
+        updatedAt: score.updatedAt
       })
       .from(score)
       .leftJoin(account, eq(score.accountId, account.id))
@@ -255,10 +260,53 @@ export class ScoreController {
     if (gameId) {
       conditions.push(eq(score.gameId, gameId));
     }
+    console.log('startTime, endTime',startTime, endTime);
+
+    if (startTime) {
+      let startDate: string;
+      try {
+        // Try parsing as ISO string first
+        const date = new Date(startTime);
+        if (isNaN(date.getTime())) {
+          // If invalid, try parsing as milliseconds
+          const timestamp = parseInt(startTime.toString());
+          if (isNaN(timestamp)) {
+            throw new Error('Invalid date format');
+          }
+          startDate = new Date(timestamp).toISOString();
+        } else {
+          startDate = date.toISOString();
+        }
+        conditions.push(sql`${score.updatedAt} >= ${startDate}`);
+      } catch (error) {
+        throw new Error('Invalid startTime format');
+      }
+    }
+
+    if (endTime) {
+      let endDate: string;
+      try {
+        // Try parsing as ISO string first
+        const date = new Date(endTime);
+        if (isNaN(date.getTime())) {
+          // If invalid, try parsing as milliseconds
+          const timestamp = parseInt(endTime.toString());
+          if (isNaN(timestamp)) {
+            throw new Error('Invalid date format');
+          }
+          endDate = new Date(timestamp).toISOString();
+        } else {
+          endDate = date.toISOString();
+        }
+        conditions.push(sql`${score.updatedAt} <= ${endDate}`);
+      } catch (error) {
+        throw new Error('Invalid endTime format');
+      }
+    }
 
     const result = await query
       .where(conditions.length > 0 ? and(...conditions) : undefined)
-      .orderBy(desc(score.createdAt))
+      .orderBy(desc(score.updatedAt))
       .limit(limit);
 
     return result;

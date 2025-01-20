@@ -12,7 +12,19 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
         properties: {
           address: { type: 'string' },
           gameId: { type: 'number', minimum: 1 },
-          limit: { type: 'number', minimum: 1, maximum: 100, default: 10 }
+          limit: { type: 'number', minimum: 1, maximum: 100, default: 10 },
+          startTime: { 
+            oneOf: [
+              { type: 'number', minimum: 0 },
+              { type: 'string', format: 'date-time' }
+            ]
+          },
+          endTime: { 
+            oneOf: [
+              { type: 'number', minimum: 0 },
+              { type: 'string', format: 'date-time' }
+            ]
+          }
         }
       },
       response: {
@@ -27,15 +39,22 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
               accountId: { type: 'number' },
               createdAt: { type: 'string' },
               accountAddress: { type: 'string' },
-              gameName: { type: 'string' }
+              gameName: { type: 'string' },
+              updatedAt: { type: 'string' }
             }
           }
         }
       }
     }
   }, async (request, reply) => {
-    const { address, gameId, limit = 10 } = request.query as { address?: string; gameId?: number; limit?: number }
-    return scoreController.getScores({ address, gameId, limit }, reply)
+    const { address, gameId, limit = 10, startTime, endTime } = request.query as { 
+      address?: string; 
+      gameId?: number; 
+      limit?: number;
+      startTime?: string | number;
+      endTime?: string | number;
+    }
+    return scoreController.getScores({ address, gameId, limit, startTime, endTime }, reply)
   })
 
   // 获取单个分数记录
