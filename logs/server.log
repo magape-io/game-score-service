@@ -4328,3 +4328,23 @@
 {"level":30,"time":1737350943190,"pid":86768,"hostname":"MacBook-Pro-2.local","reqId":"req-18","res":{"statusCode":200},"responseTime":212.35945904254913,"msg":"request completed"}
 {"level":30,"time":1737350943228,"pid":86768,"hostname":"MacBook-Pro-2.local","reqId":"req-19","req":{"method":"PUT","url":"/scores/by-address","hostname":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":62388},"msg":"incoming request"}
 {"level":30,"time":1737350943283,"pid":86768,"hostname":"MacBook-Pro-2.local","reqId":"req-19","res":{"statusCode":200},"responseTime":54.07050001621246,"msg":"request completed"}
+{"level":30,"time":1737351609171,"pid":86768,"hostname":"MacBook-Pro-2.local","reqId":"req-1a","req":{"method":"GET","url":"/","hostname":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":64690},"msg":"incoming request"}
+{"level":30,"time":1737351609182,"pid":86768,"hostname":"MacBook-Pro-2.local","reqId":"req-1a","res":{"statusCode":200},"responseTime":9.117166996002197,"msg":"request completed"}
+{"level":30,"time":1737351609321,"pid":86768,"hostname":"MacBook-Pro-2.local","reqId":"req-1b","req":{"method":"GET","url":"/favicon.ico","hostname":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":64690},"msg":"incoming request"}
+{"level":30,"time":1737351609321,"pid":86768,"hostname":"MacBook-Pro-2.local","reqId":"req-1b","msg":"Route GET:/favicon.ico not found"}
+{"level":30,"time":1737351609322,"pid":86768,"hostname":"MacBook-Pro-2.local","reqId":"req-1b","res":{"statusCode":404},"responseTime":1.1447499990463257,"msg":"request completed"}
+{"level":30,"time":1737351611405,"pid":86768,"hostname":"MacBook-Pro-2.local","reqId":"req-1c","req":{"method":"GET","url":"/","hostname":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":64690},"msg":"incoming request"}
+{"level":30,"time":1737351611405,"pid":86768,"hostname":"MacBook-Pro-2.local","reqId":"req-1c","res":{"statusCode":200},"responseTime":0.46641695499420166,"msg":"request completed"}
+{"level":30,"time":1737351612748,"pid":86768,"hostname":"MacBook-Pro-2.local","reqId":"req-1d","req":{"method":"GET","url":"/","hostname":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":64690},"msg":"incoming request"}
+{"level":30,"time":1737351612750,"pid":86768,"hostname":"MacBook-Pro-2.local","reqId":"req-1d","res":{"statusCode":200},"responseTime":1.07687509059906,"msg":"request completed"}
+{"level":30,"time":1737352056162,"pid":88291,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:4000"}
+{"level":30,"time":1737352056162,"pid":88291,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
+{"level":30,"time":1737352172399,"pid":89537,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:4000"}
+{"level":30,"time":1737352172399,"pid":89537,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
+{"level":30,"time":1737352179163,"pid":89751,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:4000"}
+{"level":30,"time":1737352179164,"pid":89751,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
+{"level":30,"time":1737352418872,"pid":90565,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1737352418872,"pid":90565,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
+{"level":30,"time":1737352427145,"pid":90565,"hostname":"MacBook-Pro-2.local","msg":"服务器已关闭"}
+{"level":30,"time":1737352430972,"pid":90737,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1737352430973,"pid":90737,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
