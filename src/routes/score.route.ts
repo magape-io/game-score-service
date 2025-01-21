@@ -378,6 +378,8 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
     Body: {
       propId: number;
       rank?: number;
+      startTime?: string;
+      endTime?: string;
     };
   }>('/rank/:gameId', {
     schema: {
@@ -393,7 +395,9 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
         required: ['propId'],
         properties: {
           propId: { type: 'number', minimum: 1 },
-          rank: { type: 'number', minimum: 1, default: 10 }
+          rank: { type: 'number', minimum: 1, default: 10 },
+          startTime: { type: 'string' },
+          endTime: { type: 'string' }
         }
       },
       response: {
@@ -420,8 +424,8 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
     }
   }, async (request, reply) => {
     const { gameId } = request.params;
-    const { propId, rank = 10 } = request.body;
-    return scoreController.getRankings(gameId, propId, rank, reply);
+    const { propId, rank = 10, startTime, endTime } = request.body;
+    return scoreController.getRankings(gameId, propId, reply, rank, startTime, endTime);
   });
 }
 

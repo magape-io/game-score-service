@@ -1,6 +1,6 @@
 import { FastifyInstance, FastifyReply } from "fastify";
 import { score, game, account, scoreName } from "../db/schema";
-import { eq, desc, and, SQL, sql } from "drizzle-orm";
+import { eq, desc, and, SQL, sql, gte, lte } from "drizzle-orm";
 
 export class ScoreController {
   constructor(private fastify: FastifyInstance) {}
@@ -477,8 +477,10 @@ export class ScoreController {
   async getRankings(
     gameId: number | string,
     propId: number,
+    reply: FastifyReply,
     rank: number = 10,
-    reply: FastifyReply
+    startTime?: string,
+    endTime?: string
   ) {
     // 验证游戏是否存在
     const gameExists = await this.fastify.db
@@ -491,8 +493,8 @@ export class ScoreController {
       throw new Error("Game not found");
     }
 
-    // 获取排行榜
-    const rankings = await this.fastify.db
+    // 构建查询条件
+    let query = this.fastify.db
       .select({
         address: account.address,
         quantity: score.score,
@@ -502,7 +504,50 @@ export class ScoreController {
       .from(score)
       .leftJoin(account, eq(score.accountId, account.id))
       .leftJoin(scoreName, eq(score.gameId, scoreName.gameId))
-      .where(eq(score.gameId, parseInt(gameId.toString())))
+      .where(
+        and(
+          eq(score.gameId, parseInt(gameId.toString())),
+          ...(startTime ? [(() => {
+            let startDate: string;
+            try {
+              const date = new Date(startTime);
+              if (isNaN(date.getTime())) {
+                const timestamp = parseInt(startTime.toString());
+                if (isNaN(timestamp)) {
+                  throw new Error('Invalid date format');
+                }
+                startDate = new Date(timestamp).toISOString();
+              } else {
+                startDate = date.toISOString();
+              }
+              return sql`${score.updatedAt} >= ${startDate}`;
+            } catch (error) {
+              throw new Error('Invalid startTime format');
+            }
+          })()] : []),
+          ...(endTime ? [(() => {
+            let endDate: string;
+            try {
+              const date = new Date(endTime);
+              if (isNaN(date.getTime())) {
+                const timestamp = parseInt(endTime.toString());
+                if (isNaN(timestamp)) {
+                  throw new Error('Invalid date format');
+                }
+                endDate = new Date(timestamp).toISOString();
+              } else {
+                endDate = date.toISOString();
+              }
+              return sql`${score.updatedAt} <= ${endDate}`;
+            } catch (error) {
+              throw new Error('Invalid endTime format');
+            }
+          })()] : [])
+        )
+      );
+
+    // 获取排行榜
+    const rankings = await query
       .orderBy(desc(score.score))
       .limit(rank);
 

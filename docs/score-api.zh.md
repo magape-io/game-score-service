@@ -67,17 +67,21 @@ POST /scores/rank/{gameId}
 | 参数名 | 说明         | 是否必填 | 示例值 | 备注 |
 |-------|--------------|---------|--------|------|
 | propId | 属性ID | 是 | 1 | score_name表中的ID |
-| rank | 返回排名数量 | 否 | 10 | 不填返回所有 |
+| rank | 返回排名数量 | 否 | 10 | 默认值为10 |
+| startTime | 开始时间 | 否 | `2025-01-01T00:00:00Z` | ISO格式或时间戳 |
+| endTime | 结束时间 | 否 | `2025-01-21T00:00:00Z` | ISO格式或时间戳 |
 
 ### 请求示例
 
 ```bash
-curl -X POST https://tcsc8wckk4kgwk000kkkoswg.whyindian.site/scores/rank/3 \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "propId": 1,
-    "rank": 5
-  }'
+curl -X POST 'https://tcsc8wckk4kgwk000kkkoswg.whyindian.site/scores/rank/3' \
+-H 'Content-Type: application/json' \
+-d '{
+  "propId": 1,
+  "rank": 10,
+  "startTime": "2025-01-01T00:00:00Z",
+  "endTime": "2025-01-21T00:00:00Z"
+}'
 ```
 
 ### 返回示例
@@ -95,4 +99,3 @@ curl -X POST https://tcsc8wckk4kgwk000kkkoswg.whyindian.site/scores/rank/3 \
     }
   ]
 }
-```
