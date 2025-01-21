@@ -58,7 +58,7 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
       startTime?: string | number;
       endTime?: string | number;
     }
-    return scoreController.getScores({ address, gameId, limit, startTime, endTime }, reply)
+    return scoreController.getScores({ address, gameId, limit, startTime, endTime })
   })
 
   // 获取单个分数记录

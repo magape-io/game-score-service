@@ -14,11 +14,11 @@ export class ScoreController {
         accountId: score.accountId,
         createdAt: score.createdAt,
         accountAddress: account.address,
-        gameName: game.name
+        gameName: game.name,
       })
       .from(score)
       .leftJoin(account, eq(score.accountId, account.id))
-      .leftJoin(game,eq(game.id,score.gameId))
+      .leftJoin(game, eq(game.id, score.gameId))
       .orderBy(desc(score.score));
   }
 
@@ -125,7 +125,7 @@ export class ScoreController {
       .update(score)
       .set({
         score: scoreValue,
-        updatedAt: sql`CURRENT_TIMESTAMP`
+        updatedAt: sql`CURRENT_TIMESTAMP`,
       })
       .where(eq(score.id, parseInt(id.toString())))
       .returning();
@@ -221,46 +221,33 @@ export class ScoreController {
     return {
       code: 200,
       err: "",
-      data: rankings
+      data: rankings,
     };
   }
 
-  async getScores({ 
-    address, 
-    gameId, 
+  async getScores({
+    address,
+    gameId,
     limit = 10,
     startTime,
-    endTime 
-  }: { 
-    address?: string; 
-    gameId?: number; 
+    endTime,
+  }: {
+    address?: string;
+    gameId?: number;
     limit?: number;
     startTime?: string | number;
     endTime?: string | number;
-  }, 
-    reply: FastifyReply
-  ) {
-    let query = this.fastify.db
-      .select({
-        address: account.address,
-        quantity: score.score,
-        propName: scoreName.name,
-        propId: scoreName.id
-      })
-      .from(score)
-      .leftJoin(account, eq(score.accountId, account.id))
-      .leftJoin(scoreName, eq(score.gameId, scoreName.gameId));
-
-    const conditions: SQL[] = [];
-
+  }) {
+    const filters: SQL[] = [];
+  
     if (address) {
-      conditions.push(eq(account.address, address));
+      filters.push(eq(account.address, address));
     }
-
+  
     if (gameId) {
-      conditions.push(eq(score.gameId, gameId));
+      filters.push(eq(score.gameId, gameId));
     }
-
+  
     if (startTime) {
       let startDate: string;
       try {
@@ -268,18 +255,18 @@ export class ScoreController {
         if (isNaN(date.getTime())) {
           const timestamp = parseInt(startTime.toString());
           if (isNaN(timestamp)) {
-            throw new Error('Invalid date format');
+            throw new Error("Invalid date format");
           }
           startDate = new Date(timestamp).toISOString();
         } else {
           startDate = date.toISOString();
         }
-        conditions.push(sql`${score.updatedAt} >= ${startDate}`);
+        filters.push(sql`${score.updatedAt} >= ${startDate}`);
       } catch (error) {
-        throw new Error('Invalid startTime format');
+        throw new Error("Invalid startTime format");
       }
     }
-
+  
     if (endTime) {
       let endDate: string;
       try {
@@ -287,29 +274,42 @@ export class ScoreController {
         if (isNaN(date.getTime())) {
           const timestamp = parseInt(endTime.toString());
           if (isNaN(timestamp)) {
-            throw new Error('Invalid date format');
+            throw new Error("Invalid date format");
           }
           endDate = new Date(timestamp).toISOString();
         } else {
           endDate = date.toISOString();
         }
-        conditions.push(sql`${score.updatedAt} <= ${endDate}`);
+        filters.push(sql`${score.updatedAt} <= ${endDate}`);
       } catch (error) {
-        throw new Error('Invalid endTime format');
+        throw new Error("Invalid endTime format");
       }
     }
-
+  
     const [result, total] = await Promise.all([
-      query
-        .where(conditions.length > 0 ? and(...conditions) : undefined)
+      this.fastify.db
+        .select({
+          address: account.address,
+          quantity: score.score,
+          propName: scoreName.name,
+          propId: scoreName.id,
+        })
+        .from(account)
+        .leftJoin(score, eq(score.accountId, account.id))
+        .leftJoin(scoreName, eq(score.gameId, scoreName.gameId))
+        .where(filters.length > 0 ? and(...filters) : undefined)
         .orderBy(desc(score.updatedAt))
         .limit(limit),
+    
       this.fastify.db
-        .select({ count: sql<number>`count(*)` })
-        .from(score)
-        .where(conditions.length > 0 ? and(...conditions) : undefined)
+        .select({
+          count: sql<number>`count(*)`
+        })
+        .from(account)
+        .leftJoin(score, eq(score.accountId, account.id))
+        .where(filters.length > 0 ? and(...filters) : undefined)
     ]);
-
+  
     return {
       code: 200,
       err: "",
@@ -330,7 +330,7 @@ export class ScoreController {
     }
 
     const accountId = accountResult[0].id;
-    
+
     const result = await this.fastify.db
       .select({
         id: score.id,
@@ -340,19 +340,23 @@ export class ScoreController {
         createdAt: score.createdAt,
         accountAddress: account.address,
         gameName: game.name,
-        scoreName: scoreName.name
+        scoreName: scoreName.name,
       })
       .from(score)
       .where(eq(score.accountId, accountId))
       .leftJoin(account, eq(score.accountId, account.id))
       .leftJoin(game, eq(score.gameId, game.id))
       .orderBy(desc(score.createdAt))
-      .leftJoin(scoreName, eq(score.gameId, scoreName.id))
+      .leftJoin(scoreName, eq(score.gameId, scoreName.id));
 
     return result;
   }
 
-  async getScoresByAddressAndGame(address: string, gameId: number | string, reply: FastifyReply) {
+  async getScoresByAddressAndGame(
+    address: string,
+    gameId: number | string,
+    reply: FastifyReply
+  ) {
     const accountResult = await this.fastify.db
       .select()
       .from(account)
@@ -364,7 +368,7 @@ export class ScoreController {
     }
 
     const accountId = accountResult[0].id;
-    
+
     const result = await this.fastify.db
       .select({
         id: score.id,
@@ -376,10 +380,9 @@ export class ScoreController {
         gameName: game.name,
       })
       .from(score)
-      .where(and(
-        eq(score.accountId, accountId),
-        eq(score.gameId, Number(gameId))
-      ))
+      .where(
+        and(eq(score.accountId, accountId), eq(score.gameId, Number(gameId)))
+      )
       .leftJoin(account, eq(score.accountId, account.id))
       .leftJoin(game, eq(score.gameId, game.id))
       .orderBy(desc(score.createdAt));
@@ -387,7 +390,12 @@ export class ScoreController {
     return result;
   }
 
-  async updateScoreByAddress(address: string, gameId: number, newScore: number, reply: FastifyReply) {
+  async updateScoreByAddress(
+    address: string,
+    gameId: number,
+    newScore: number,
+    reply: FastifyReply
+  ) {
     // First check if game exists
     const gameResult = await this.fastify.db
       .select()
@@ -416,10 +424,7 @@ export class ScoreController {
     const existingScore = await this.fastify.db
       .select()
       .from(score)
-      .where(and(
-        eq(score.accountId, accountId),
-        eq(score.gameId, gameId)
-      ));
+      .where(and(eq(score.accountId, accountId), eq(score.gameId, gameId)));
 
     if (!existingScore.length) {
       // If no existing score, create new one
@@ -432,9 +437,9 @@ export class ScoreController {
       // If existing score exists, update it
       return this.fastify.db
         .update(score)
-        .set({ 
+        .set({
           score: newScore,
-          updatedAt: sql`CURRENT_TIMESTAMP`
+          updatedAt: sql`CURRENT_TIMESTAMP`,
         })
         .where(eq(score.id, existingScore[0].id));
     }
@@ -453,7 +458,7 @@ export class ScoreController {
       .where(eq(account.address, address));
 
     let accountId: number;
-    
+
     if (!accountResult.length) {
       // Create new account if it doesn't exist
       const newAccount = await this.fastify.db
@@ -499,7 +504,7 @@ export class ScoreController {
         address: account.address,
         quantity: score.score,
         propId: sql<number>`${propId}`,
-        propName: sql<string>`${scoreName.name}`
+        propName: sql<string>`${scoreName.name}`,
       })
       .from(score)
       .leftJoin(account, eq(score.accountId, account.id))
@@ -507,54 +512,60 @@ export class ScoreController {
       .where(
         and(
           eq(score.gameId, parseInt(gameId.toString())),
-          ...(startTime ? [(() => {
-            let startDate: string;
-            try {
-              const date = new Date(startTime);
-              if (isNaN(date.getTime())) {
-                const timestamp = parseInt(startTime.toString());
-                if (isNaN(timestamp)) {
-                  throw new Error('Invalid date format');
-                }
-                startDate = new Date(timestamp).toISOString();
-              } else {
-                startDate = date.toISOString();
-              }
-              return sql`${score.updatedAt} >= ${startDate}`;
-            } catch (error) {
-              throw new Error('Invalid startTime format');
-            }
-          })()] : []),
-          ...(endTime ? [(() => {
-            let endDate: string;
-            try {
-              const date = new Date(endTime);
-              if (isNaN(date.getTime())) {
-                const timestamp = parseInt(endTime.toString());
-                if (isNaN(timestamp)) {
-                  throw new Error('Invalid date format');
-                }
-                endDate = new Date(timestamp).toISOString();
-              } else {
-                endDate = date.toISOString();
-              }
-              return sql`${score.updatedAt} <= ${endDate}`;
-            } catch (error) {
-              throw new Error('Invalid endTime format');
-            }
-          })()] : [])
+          ...(startTime
+            ? [
+                (() => {
+                  let startDate: string;
+                  try {
+                    const date = new Date(startTime);
+                    if (isNaN(date.getTime())) {
+                      const timestamp = parseInt(startTime.toString());
+                      if (isNaN(timestamp)) {
+                        throw new Error("Invalid date format");
+                      }
+                      startDate = new Date(timestamp).toISOString();
+                    } else {
+                      startDate = date.toISOString();
+                    }
+                    return sql`${score.updatedAt} >= ${startDate}`;
+                  } catch (error) {
+                    throw new Error("Invalid startTime format");
+                  }
+                })(),
+              ]
+            : []),
+          ...(endTime
+            ? [
+                (() => {
+                  let endDate: string;
+                  try {
+                    const date = new Date(endTime);
+                    if (isNaN(date.getTime())) {
+                      const timestamp = parseInt(endTime.toString());
+                      if (isNaN(timestamp)) {
+                        throw new Error("Invalid date format");
+                      }
+                      endDate = new Date(timestamp).toISOString();
+                    } else {
+                      endDate = date.toISOString();
+                    }
+                    return sql`${score.updatedAt} <= ${endDate}`;
+                  } catch (error) {
+                    throw new Error("Invalid endTime format");
+                  }
+                })(),
+              ]
+            : [])
         )
       );
 
     // 获取排行榜
-    const rankings = await query
-      .orderBy(desc(score.score))
-      .limit(rank);
+    const rankings = await query.orderBy(desc(score.score)).limit(rank);
 
     return {
       code: 200,
-      err: '',
-      data: rankings
+      err: "",
+      data: rankings,
     };
   }
 }

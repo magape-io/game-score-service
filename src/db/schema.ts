@@ -1,5 +1,5 @@
 import { pgTable, serial, text, timestamp, foreignKey, integer, unique } from "drizzle-orm/pg-core"
-import { sql } from "drizzle-orm"
+import { relations, sql } from "drizzle-orm"
 
 export const game = pgTable("game", {
 	id: serial().primaryKey().notNull(),
@@ -26,6 +26,17 @@ export const score = pgTable("score", {
 			name: "score_account_id_account_id_fk"
 		}),
 ]);
+
+export const scoreRelations = relations(score, ({ one }) => ({
+	account: one(account, {
+	  fields: [score.accountId],
+	  references: [account.id],
+	}),
+	scoreName: one(scoreName, {
+	  fields: [score.gameId],
+	  references: [scoreName.gameId],
+	})
+  }));
 
 export const scoreName = pgTable("score_name", {
   id: serial().primaryKey().notNull(),
