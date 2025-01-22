@@ -9,6 +9,7 @@ import drizzlePlugin from './plugins/drizzle'
 import userRoutes from './routes/user.route'
 import accountRoutes from './routes/account.route'
 import scoreRoutes from './routes/score.route'
+import { rankRoutes } from './routes/rank.route';
 
 // 创建 Fastify 实例
 const server = fastify({ logger: loggerConfig })
@@ -23,6 +24,7 @@ server.register(helloRoutes)
 server.register(userRoutes, { prefix: '/users' })
 server.register(accountRoutes, { prefix: '/accounts' })
 server.register(scoreRoutes, { prefix: '/scores' })
+server.register(rankRoutes,{prefix: '/rank'})
 
 // 启动服务器
 const start = async (): Promise<void> => {
