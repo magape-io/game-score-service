@@ -8,11 +8,13 @@ export class RankController {
     this.fastify = fastify;
   }
 
-  getRank = async (request: FastifyRequest<{
-    Params: {
-      address: string;
-    };
-  }>) => {
+  getRank = async (
+    request: FastifyRequest<{
+      Params: {
+        address: string;
+      };
+    }>
+  ) => {
     const { address } = request.params;
     const db = this.fastify.db;
 
@@ -57,13 +59,17 @@ export class RankController {
     }
 
     const rankData = result.rows[0];
-    
+
     return {
-      rank: rankData.rank,
-      distanceToNext: rankData.distanceToNext,
-      address: address,
-      quantity: rankData.score,
-      propId: rankData.prop_id,
+      code: 200,
+      err: "",
+      data: {
+        rank: rankData.rank,
+        distanceToNext: rankData.distanceToNext,
+        address: address,
+        quantity: rankData.score,
+        propId: rankData.prop_id,
+      },
     };
   };
 }

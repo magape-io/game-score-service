@@ -11,12 +11,16 @@ export async function rankRoutes(fastify: FastifyInstance) {
           200: {
             type: "object",
             properties: {
-              rank: { type: "number" },
-              // 距离上一名差多少分，用什么名称比较好
-              distanceToNext: { type: "number" },
-              address: { type: "string" },
-              quantity: { type: "number" },
-              propId: { type: "number" },
+              data: {
+                rank: { type: "number" },
+                // 距离上一名差多少分，用什么名称比较好
+                distanceToNext: { type: "number" },
+                address: { type: "string" },
+                quantity: { type: "number" },
+                propId: { type: "number" },
+              },
+              err: { type: "string" },
+              code: { type: "number" },
             },
           },
         },
