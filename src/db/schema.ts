@@ -4,7 +4,20 @@ import { relations, sql } from "drizzle-orm"
 export const game = pgTable("game", {
 	id: serial().primaryKey().notNull(),
 	name: text().notNull(),
+	url: text(),
+	icon: text(),
+	bannerImages: text(),
+	status: integer(),
+	type: text(),
+	platforms: text(),
+	address: text(),
+	networkId: text(),
+	briefDescription: text(),
+	description: text(),
+	developers: text(),
+	createBy: text(),
 	createdAt: timestamp("created_at", { mode: 'string' }).defaultNow(),
+	updatedAt: timestamp("updated_at", { mode: 'string' }).default(sql`CURRENT_TIMESTAMP`),
 });
 
 export const score = pgTable("score", {

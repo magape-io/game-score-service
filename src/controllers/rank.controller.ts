@@ -55,7 +55,17 @@ export class RankController {
     `);
 
     if (!result.rows.length) {
-      throw new Error("User score not found");
+      return {
+        code: 200,
+        err: "",
+        data: {
+          rank: 0,
+          distanceToNext: 0,
+          address: address,
+          quantity: 0,
+          propId: 0,
+        },
+      };
     }
 
     const rankData = result.rows[0];
