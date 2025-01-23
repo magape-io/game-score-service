@@ -58,13 +58,7 @@ export class RankController {
       return {
         code: 200,
         err: "",
-        data: {
-          rank: 0,
-          distanceToNext: 0,
-          address: address,
-          quantity: 0,
-          propId: 0,
-        },
+        data: null,
       };
     }
 
