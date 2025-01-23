@@ -293,10 +293,12 @@ export class ScoreController {
           quantity: score.score,
           propName: scoreName.name,
           propId: scoreName.id,
+          url: game.url,  // 添加 url 字段
         })
         .from(account)
         .leftJoin(score, eq(score.accountId, account.id))
         .leftJoin(scoreName, eq(score.gameId, scoreName.gameId))
+        .leftJoin(game, eq(score.gameId, game.id))  // 添加 game 表的 JOIN
         .where(filters.length > 0 ? and(...filters) : undefined)
         .orderBy(desc(score.updatedAt))
         .limit(limit),
