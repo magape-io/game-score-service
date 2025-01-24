@@ -35,7 +35,7 @@ export class AccountController {
   async createAccount(address: string) {
     return this.fastify.db.insert(account).values({
       address,
-    });
+    }).returning();
   }
 
   async deleteAccount(id: number | string, reply: FastifyReply) {
