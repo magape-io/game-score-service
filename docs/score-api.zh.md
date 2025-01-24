@@ -99,3 +99,48 @@ curl -X POST 'https://tcsc8wckk4kgwk000kkkoswg.whyindian.site/scores/rank/3' \
     }
   ]
 }
+
+```
+
+## 3. 查询用户成就完成状态
+
+### 接口地址
+```
+GET /achievements/:address/:achievementId
+```
+
+### 路径参数
+
+| 参数名 | 说明 | 是否必填 | 示例值 |
+|--------|------|---------|--------|
+| address | 钱包地址 | 是 | 0x897575 |
+| achievementId | 成就ID | 是 | 1 |
+
+### 请求示例
+
+```bash
+curl 'https://tcsc8wckk4kgwk000kkkoswg.whyindian.site/achievements/0xA34357486224151dDfDB291E13194995c22Df505/1'
+```
+
+### 返回示例
+
+```json
+{
+  "code": 200,
+  "err": "",
+  "data": true  // true表示已完成，false表示未完成
+}
+```
+
+### 返回说明
+
+- 如果地址不存在，返回 `data: false`
+- 如果成就记录不存在，返回 `data: false`
+- 如果发生错误，返回：
+  ```json
+  {
+    "code": 500,
+    "err": "错误信息",
+    "data": false
+  }
+  ```

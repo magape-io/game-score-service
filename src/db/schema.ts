@@ -1,4 +1,4 @@
-import { pgTable, serial, text, timestamp, foreignKey, integer, unique } from "drizzle-orm/pg-core"
+import { pgTable, serial, text, timestamp, foreignKey, integer, unique, boolean } from "drizzle-orm/pg-core"
 import { relations, sql } from "drizzle-orm"
 
 export const game = pgTable("game", {
@@ -106,3 +106,50 @@ export const users = pgTable("users", {
 	id: serial().primaryKey().notNull(),
 	name: text().notNull(),
 });
+
+// 成就类型表
+export const achievementType = pgTable("achievement_type", {
+  id: serial().primaryKey().notNull(),
+  gameId: integer().references(() => game.id).notNull(),
+  name: text().notNull(),
+});
+
+// 成就记录表（用户完成的成就）
+export const achievement = pgTable("achievement", {
+  id: serial().primaryKey().notNull(),
+  achievementId: integer().references(() => achievementType.id).notNull(),  // 关联到achievement_type
+  accountId: integer().references(() => account.id).notNull(),             // 关联到account
+  complete: boolean().default(false),
+  completeTime: timestamp("complete_time", { mode: 'string' }),
+}, (table) => [
+	foreignKey({
+		columns: [table.achievementId],
+		foreignColumns: [achievementType.id],
+		name: "achievement_achievement_id_achievement_type_id_fk"
+	}),
+	foreignKey({
+		columns: [table.accountId],
+		foreignColumns: [account.id],
+		name: "achievement_account_id_account_id_fk"
+	}),
+  unique("achievement_account_achievement_unique").on(table.accountId, table.achievementId)
+]);
+
+// 表关系定义
+export const achievementTypeRelations = relations(achievementType, ({ one }) => ({
+  game: one(game, {
+    fields: [achievementType.gameId],
+    references: [game.id],
+  }),
+}));
+
+export const achievementRelations = relations(achievement, ({ one }) => ({
+  achievementType: one(achievementType, {
+    fields: [achievement.achievementId],
+    references: [achievementType.id],
+  }),
+  account: one(account, {
+    fields: [achievement.accountId],
+    references: [account.id],
+  }),
+}));
