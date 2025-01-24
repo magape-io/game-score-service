@@ -30,10 +30,10 @@ export async function achievementRoutes(fastify: FastifyInstance) {
       schema: {
         body: {
           type: "object",
-          required: ["address", "achievementId"],
+          required: ["address", "type"],
           properties: {
             address: { type: "string" },
-            achievementId: { type: "number" },
+            type: { type: "number" },
           },
         },
       },

@@ -114,7 +114,7 @@ POST /achievements/check
 | 参数名 | 说明 | 是否必填 | 示例值 |
 |--------|------|---------|--------|
 | address | 钱包地址 | 是 | 0xA34357486224151dDfDB291E13194995c22Df505 |
-| achievementId | 成就ID | 是 | 1 |
+| type | 成就类型 | 是 | 1 |
 
 ### 请求示例
 
@@ -123,7 +123,7 @@ curl -X POST 'https://tcsc8wckk4kgwk000kkkoswg.whyindian.site/achievements/check
 -H 'Content-Type: application/json' \
 -d '{
   "address": "0xA34357486224151dDfDB291E13194995c22Df505",
-  "achievementId": 1
+  "type": 1
 }'
 ```
 

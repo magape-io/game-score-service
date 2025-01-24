@@ -13,7 +13,7 @@ interface CreateAchievementRequest {
 interface CheckAchievementRequest {
   Body: {
     address: string;
-    achievementId: number;
+    type: number;
   }
 }
 
@@ -59,7 +59,7 @@ export class AchievementController {
     reply: FastifyReply
   ) {
     try {
-      const { address, achievementId } = request.body;
+      const { address, type } = request.body;
 
       // 先查询account
       const accountResult = await this.fastify.db
@@ -85,7 +85,7 @@ export class AchievementController {
         .where(
           and(
             eq(achievement.accountId, accountId),
-            eq(achievement.achievementId, achievementId)
+            eq(achievement.achievementId, type)
           )
         );
 
