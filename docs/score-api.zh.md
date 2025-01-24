@@ -131,16 +131,3 @@ curl 'https://tcsc8wckk4kgwk000kkkoswg.whyindian.site/achievements/0xA3435748622
   "data": true  // true表示已完成，false表示未完成
 }
 ```
-
-### 返回说明
-
-- 如果地址不存在，返回 `data: false`
-- 如果成就记录不存在，返回 `data: false`
-- 如果发生错误，返回：
-  ```json
-  {
-    "code": 500,
-    "err": "错误信息",
-    "data": false
-  }
-  ```
