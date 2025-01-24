@@ -24,16 +24,16 @@ export async function achievementRoutes(fastify: FastifyInstance) {
   );
 
   // 查询用户成就完成情况
-  fastify.get(
-    "/:address/:achievementId",
+  fastify.post(
+    "/check",
     {
       schema: {
-        params: {
+        body: {
           type: "object",
           required: ["address", "achievementId"],
           properties: {
             address: { type: "string" },
-            achievementId: { type: "string" },
+            achievementId: { type: "number" },
           },
         },
       },

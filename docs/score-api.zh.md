@@ -106,20 +106,25 @@ curl -X POST 'https://tcsc8wckk4kgwk000kkkoswg.whyindian.site/scores/rank/3' \
 
 ### 接口地址
 ```
-GET /achievements/:address/:achievementId
+POST /achievements/check
 ```
 
-### 路径参数
+### 请求参数
 
 | 参数名 | 说明 | 是否必填 | 示例值 |
 |--------|------|---------|--------|
-| address | 钱包地址 | 是 | 0x897575 |
+| address | 钱包地址 | 是 | 0xA34357486224151dDfDB291E13194995c22Df505 |
 | achievementId | 成就ID | 是 | 1 |
 
 ### 请求示例
 
 ```bash
-curl 'https://tcsc8wckk4kgwk000kkkoswg.whyindian.site/achievements/0xA34357486224151dDfDB291E13194995c22Df505/1'
+curl -X POST 'https://tcsc8wckk4kgwk000kkkoswg.whyindian.site/achievements/check' \
+-H 'Content-Type: application/json' \
+-d '{
+  "address": "0xA34357486224151dDfDB291E13194995c22Df505",
+  "achievementId": 1
+}'
 ```
 
 ### 返回示例
@@ -130,4 +135,3 @@ curl 'https://tcsc8wckk4kgwk000kkkoswg.whyindian.site/achievements/0xA3435748622
   "err": "",
   "data": true  // true表示已完成，false表示未完成
 }
-```

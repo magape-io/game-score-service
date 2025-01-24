@@ -5192,3 +5192,9 @@
 {"level":30,"time":1737688236256,"pid":59541,"hostname":"MacBook-Pro-2.local","reqId":"req-9","req":{"method":"GET","url":"/serviceWorker.js","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":60929},"msg":"incoming request"}
 {"level":30,"time":1737688236257,"pid":59541,"hostname":"MacBook-Pro-2.local","reqId":"req-9","msg":"Route GET:/serviceWorker.js not found"}
 {"level":30,"time":1737688236257,"pid":59541,"hostname":"MacBook-Pro-2.local","reqId":"req-9","res":{"statusCode":404},"responseTime":0.7590419948101044,"msg":"request completed"}
+{"level":30,"time":1737688851064,"pid":61595,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1737688851064,"pid":61595,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
+{"level":30,"time":1737688857702,"pid":61705,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1737688857702,"pid":61705,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
+{"level":30,"time":1737688932610,"pid":61705,"hostname":"MacBook-Pro-2.local","reqId":"req-1","req":{"method":"POST","url":"/achievements/check","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":51088},"msg":"incoming request"}
+{"level":30,"time":1737688932700,"pid":61705,"hostname":"MacBook-Pro-2.local","reqId":"req-1","res":{"statusCode":200},"responseTime":89.22095900774002,"msg":"request completed"}
