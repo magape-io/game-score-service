@@ -34,7 +34,7 @@ export class GameController {
         .orderBy(desc(game.createdAt));
 
       return {
-        code: 0,
+        code: 200,
         data: gamesWithUserCount,
         message: "success"
       };
