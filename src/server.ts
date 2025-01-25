@@ -11,6 +11,7 @@ import accountRoutes from './routes/account.route'
 import scoreRoutes from './routes/score.route'
 import { rankRoutes } from './routes/rank.route';
 import { achievementRoutes } from './routes/achievement.route';
+import gameRoutes from './routes/game.route'
 
 // 创建 Fastify 实例
 const server = fastify({ logger: loggerConfig })
@@ -27,6 +28,7 @@ server.register(accountRoutes, { prefix: '/accounts' })
 server.register(scoreRoutes, { prefix: '/scores' })
 server.register(rankRoutes,{prefix: '/rank'})
 server.register(achievementRoutes, { prefix: '/achievements' })
+server.register(gameRoutes, { prefix: '/game' })
 
 // 启动服务器
 const start = async (): Promise<void> => {

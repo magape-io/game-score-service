@@ -5246,3 +5246,86 @@
 {"level":30,"time":1737691174207,"pid":35668,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
 {"level":30,"time":1737691214089,"pid":35891,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:3000"}
 {"level":30,"time":1737691214089,"pid":35891,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
+{"level":30,"time":1737777269568,"pid":62411,"hostname":"andydeMacBook-Pro.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1737777269569,"pid":62411,"hostname":"andydeMacBook-Pro.local","msg":"服务器启动成功"}
+{"level":30,"time":1737777270442,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","req":{"method":"GET","url":"/","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":59646},"msg":"incoming request"}
+{"level":30,"time":1737777270445,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","res":{"statusCode":200},"responseTime":3.0321670174598694,"msg":"request completed"}
+{"level":30,"time":1737777271486,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-2","req":{"method":"GET","url":"/favicon.ico","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":59646},"msg":"incoming request"}
+{"level":30,"time":1737777271486,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-2","msg":"Route GET:/favicon.ico not found"}
+{"level":30,"time":1737777271487,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-2","res":{"statusCode":404},"responseTime":0.9057080149650574,"msg":"request completed"}
+{"level":30,"time":1737777272822,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-3","req":{"method":"GET","url":"/games","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":59646},"msg":"incoming request"}
+{"level":30,"time":1737777272822,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-3","msg":"Route GET:/games not found"}
+{"level":30,"time":1737777272823,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-3","res":{"statusCode":404},"responseTime":0.7670830488204956,"msg":"request completed"}
+{"level":30,"time":1737777273815,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-4","req":{"method":"GET","url":"/serviceWorker.js","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":59646},"msg":"incoming request"}
+{"level":30,"time":1737777273815,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-4","msg":"Route GET:/serviceWorker.js not found"}
+{"level":30,"time":1737777273816,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-4","res":{"statusCode":404},"responseTime":1.1127079725265503,"msg":"request completed"}
+{"level":30,"time":1737777273819,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-5","req":{"method":"GET","url":"/serviceWorker.js","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":59678},"msg":"incoming request"}
+{"level":30,"time":1737777273820,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-5","msg":"Route GET:/serviceWorker.js not found"}
+{"level":30,"time":1737777273820,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-5","res":{"statusCode":404},"responseTime":0.9776250123977661,"msg":"request completed"}
+{"level":30,"time":1737777274764,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-6","req":{"method":"GET","url":"/game","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":59646},"msg":"incoming request"}
+{"level":30,"time":1737777274764,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-6","msg":"Route GET:/game not found"}
+{"level":30,"time":1737777274764,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-6","res":{"statusCode":404},"responseTime":0.7559580206871033,"msg":"request completed"}
+{"level":30,"time":1737777275325,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-7","req":{"method":"GET","url":"/serviceWorker.js","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":59646},"msg":"incoming request"}
+{"level":30,"time":1737777275325,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-7","msg":"Route GET:/serviceWorker.js not found"}
+{"level":30,"time":1737777275325,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-7","res":{"statusCode":404},"responseTime":0.30183303356170654,"msg":"request completed"}
+{"level":30,"time":1737777275327,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-8","req":{"method":"GET","url":"/serviceWorker.js","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":59678},"msg":"incoming request"}
+{"level":30,"time":1737777275327,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-8","msg":"Route GET:/serviceWorker.js not found"}
+{"level":30,"time":1737777275327,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-8","res":{"statusCode":404},"responseTime":0.1426669955253601,"msg":"request completed"}
+{"level":30,"time":1737777277191,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-9","req":{"method":"GET","url":"/serviceWorker.js","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":59646},"msg":"incoming request"}
+{"level":30,"time":1737777277191,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-9","msg":"Route GET:/serviceWorker.js not found"}
+{"level":30,"time":1737777277191,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-9","res":{"statusCode":404},"responseTime":0.477666974067688,"msg":"request completed"}
+{"level":30,"time":1737777277193,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-a","req":{"method":"GET","url":"/serviceWorker.js","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":59678},"msg":"incoming request"}
+{"level":30,"time":1737777277194,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-a","msg":"Route GET:/serviceWorker.js not found"}
+{"level":30,"time":1737777277194,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-a","res":{"statusCode":404},"responseTime":0.462041974067688,"msg":"request completed"}
+{"level":30,"time":1737777286910,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-b","req":{"method":"GET","url":"/serviceWorker.js","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":59646},"msg":"incoming request"}
+{"level":30,"time":1737777286910,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-b","msg":"Route GET:/serviceWorker.js not found"}
+{"level":30,"time":1737777286910,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-b","res":{"statusCode":404},"responseTime":0.3930410146713257,"msg":"request completed"}
+{"level":30,"time":1737777286917,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-c","req":{"method":"GET","url":"/serviceWorker.js","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":59678},"msg":"incoming request"}
+{"level":30,"time":1737777286917,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-c","msg":"Route GET:/serviceWorker.js not found"}
+{"level":30,"time":1737777286917,"pid":62411,"hostname":"andydeMacBook-Pro.local","reqId":"req-c","res":{"statusCode":404},"responseTime":0.12108302116394043,"msg":"request completed"}
+{"level":30,"time":1737777305204,"pid":62818,"hostname":"andydeMacBook-Pro.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1737777305205,"pid":62818,"hostname":"andydeMacBook-Pro.local","msg":"服务器启动成功"}
+{"level":30,"time":1737777305825,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","req":{"method":"GET","url":"/serviceWorker.js","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":60215},"msg":"incoming request"}
+{"level":30,"time":1737777305825,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","msg":"Route GET:/serviceWorker.js not found"}
+{"level":30,"time":1737777305828,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","res":{"statusCode":404},"responseTime":3.28091698884964,"msg":"request completed"}
+{"level":30,"time":1737777305830,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-2","req":{"method":"GET","url":"/serviceWorker.js","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":60217},"msg":"incoming request"}
+{"level":30,"time":1737777305830,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-2","msg":"Route GET:/serviceWorker.js not found"}
+{"level":30,"time":1737777305831,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-2","res":{"statusCode":404},"responseTime":0.21754199266433716,"msg":"request completed"}
+{"level":30,"time":1737777307000,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-3","req":{"method":"GET","url":"/game","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":60215},"msg":"incoming request"}
+{"level":30,"time":1737777307000,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-3","msg":"Route GET:/game not found"}
+{"level":30,"time":1737777307001,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-3","res":{"statusCode":404},"responseTime":0.35808300971984863,"msg":"request completed"}
+{"level":30,"time":1737777310289,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-4","req":{"method":"GET","url":"/serviceWorker.js","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":60215},"msg":"incoming request"}
+{"level":30,"time":1737777310289,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-4","msg":"Route GET:/serviceWorker.js not found"}
+{"level":30,"time":1737777310289,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-4","res":{"statusCode":404},"responseTime":0.3019169569015503,"msg":"request completed"}
+{"level":30,"time":1737777310291,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-5","req":{"method":"GET","url":"/serviceWorker.js","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":60217},"msg":"incoming request"}
+{"level":30,"time":1737777310291,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-5","msg":"Route GET:/serviceWorker.js not found"}
+{"level":30,"time":1737777310292,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-5","res":{"statusCode":404},"responseTime":0.17470794916152954,"msg":"request completed"}
+{"level":30,"time":1737777320436,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-6","req":{"method":"GET","url":"/game/games","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":60215},"msg":"incoming request"}
+{"level":30,"time":1737777320741,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-6","res":{"statusCode":200},"responseTime":304.774208009243,"msg":"request completed"}
+{"level":30,"time":1737777323173,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-7","req":{"method":"GET","url":"/serviceWorker.js","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":60215},"msg":"incoming request"}
+{"level":30,"time":1737777323173,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-7","msg":"Route GET:/serviceWorker.js not found"}
+{"level":30,"time":1737777323174,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-7","res":{"statusCode":404},"responseTime":0.3523339629173279,"msg":"request completed"}
+{"level":30,"time":1737777323175,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-8","req":{"method":"GET","url":"/serviceWorker.js","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":60217},"msg":"incoming request"}
+{"level":30,"time":1737777323175,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-8","msg":"Route GET:/serviceWorker.js not found"}
+{"level":30,"time":1737777323176,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-8","res":{"statusCode":404},"responseTime":0.680666983127594,"msg":"request completed"}
+{"level":30,"time":1737777334903,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-9","req":{"method":"GET","url":"/serviceWorker.js","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":60215},"msg":"incoming request"}
+{"level":30,"time":1737777334904,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-9","msg":"Route GET:/serviceWorker.js not found"}
+{"level":30,"time":1737777334905,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-9","res":{"statusCode":404},"responseTime":0.9157500267028809,"msg":"request completed"}
+{"level":30,"time":1737777334907,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-a","req":{"method":"GET","url":"/serviceWorker.js","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":60217},"msg":"incoming request"}
+{"level":30,"time":1737777334908,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-a","msg":"Route GET:/serviceWorker.js not found"}
+{"level":30,"time":1737777334909,"pid":62818,"hostname":"andydeMacBook-Pro.local","reqId":"req-a","res":{"statusCode":404},"responseTime":1.1621249914169312,"msg":"request completed"}
+{"level":30,"time":1737777401422,"pid":63074,"hostname":"andydeMacBook-Pro.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1737777401422,"pid":63074,"hostname":"andydeMacBook-Pro.local","msg":"服务器启动成功"}
+{"level":30,"time":1737777421088,"pid":63074,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","req":{"method":"GET","url":"/game/games","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":61208},"msg":"incoming request"}
+{"level":30,"time":1737777421413,"pid":63074,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","res":{"statusCode":200},"responseTime":324.99170899391174,"msg":"request completed"}
+{"level":30,"time":1737777423881,"pid":63074,"hostname":"andydeMacBook-Pro.local","reqId":"req-2","req":{"method":"GET","url":"/serviceWorker.js","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":61208},"msg":"incoming request"}
+{"level":30,"time":1737777423881,"pid":63074,"hostname":"andydeMacBook-Pro.local","reqId":"req-2","msg":"Route GET:/serviceWorker.js not found"}
+{"level":30,"time":1737777423883,"pid":63074,"hostname":"andydeMacBook-Pro.local","reqId":"req-2","res":{"statusCode":404},"responseTime":1.34437495470047,"msg":"request completed"}
+{"level":30,"time":1737777433923,"pid":63439,"hostname":"andydeMacBook-Pro.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1737777433923,"pid":63439,"hostname":"andydeMacBook-Pro.local","msg":"服务器启动成功"}
+{"level":30,"time":1737777452146,"pid":63439,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","req":{"method":"GET","url":"/serviceWorker.js","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":61557},"msg":"incoming request"}
+{"level":30,"time":1737777452146,"pid":63439,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","msg":"Route GET:/serviceWorker.js not found"}
+{"level":30,"time":1737777452149,"pid":63439,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","res":{"statusCode":404},"responseTime":3.3211669921875,"msg":"request completed"}
+{"level":30,"time":1737777452151,"pid":63439,"hostname":"andydeMacBook-Pro.local","reqId":"req-2","req":{"method":"GET","url":"/serviceWorker.js","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":61559},"msg":"incoming request"}
+{"level":30,"time":1737777452151,"pid":63439,"hostname":"andydeMacBook-Pro.local","reqId":"req-2","msg":"Route GET:/serviceWorker.js not found"}
+{"level":30,"time":1737777452152,"pid":63439,"hostname":"andydeMacBook-Pro.local","reqId":"req-2","res":{"statusCode":404},"responseTime":0.20158404111862183,"msg":"request completed"}
