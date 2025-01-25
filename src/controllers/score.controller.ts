@@ -485,7 +485,7 @@ export class ScoreController {
     gameId: number | string,
     propId: number,
     reply: FastifyReply,
-    rank: number = 10,
+    rank: number = 10000,
     startTime?: string,
     endTime?: string
   ) {

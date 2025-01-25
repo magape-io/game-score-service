@@ -424,7 +424,7 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
     }
   }, async (request, reply) => {
     const { gameId } = request.params;
-    const { propId, rank = 10, startTime, endTime } = request.body;
+    const { propId, rank = 10000, startTime, endTime } = request.body;
     return scoreController.getRankings(gameId, propId, reply, rank, startTime, endTime);
   });
 }
