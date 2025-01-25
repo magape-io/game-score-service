@@ -338,7 +338,7 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
       querystring: {
         type: 'object',
         properties: {
-          limit: { type: 'number', minimum: 1, maximum: 100, default: 10 }
+          limit: { type: 'number', minimum: 1, maximum: 1000001, default: 10000 }
         }
       },
       response: {
@@ -395,7 +395,7 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
         required: ['propId'],
         properties: {
           propId: { type: 'number', minimum: 1 },
-          rank: { type: 'number', minimum: 1, default: 10 },
+          rank: { type: 'number', minimum: 1, default: 10000 },
           startTime: { type: 'string' },
           endTime: { type: 'string' }
         }
@@ -424,8 +424,13 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
     }
   }, async (request, reply) => {
     const { gameId } = request.params;
+    console.log('Raw request body:', request.body);
     const { propId, rank = 10000, startTime, endTime } = request.body;
-    return scoreController.getRankings(gameId, propId, reply, rank, startTime, endTime);
+    console.log('rank before getRankings:', rank, 'type:', typeof rank);
+    console.log('rank is from', rank);
+    const result = await scoreController.getRankings(gameId, propId, reply, rank, startTime, endTime);
+    console.log('result from getRankings:', result);
+    return result;
   });
 }
 

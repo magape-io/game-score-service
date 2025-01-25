@@ -489,6 +489,7 @@ export class ScoreController {
     startTime?: string,
     endTime?: string
   ) {
+    console.log('getRankings received rank:', rank, 'type:', typeof rank);
     // 验证游戏是否存在
     const gameExists = await this.fastify.db
       .select()
@@ -560,7 +561,7 @@ export class ScoreController {
             : [])
         )
       );
-
+      console.log('rank is',rank);
     // 获取排行榜
     const rankings = await query.orderBy(desc(score.score)).limit(rank);
 
