@@ -41,7 +41,6 @@ export async function achievementRoutes(fastify: FastifyInstance) {
       schema: {
         querystring: {
           type: "object",
-          required: ["address"],
           properties: {
             address: { 
               type: "string",
