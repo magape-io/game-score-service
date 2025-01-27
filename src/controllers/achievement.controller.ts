@@ -66,17 +66,6 @@ export class AchievementController {
 
       const accountId = userAccount[0].id;
 
-      // 构建查询条件
-      const conditions = [
-        eq(achievement.achievementId, achievementType.id),
-        eq(achievement.accountId, accountId)
-      ];
-
-      // 如果提供了gameId，添加gameId筛选
-      if (gameId) {
-        conditions.push(eq(achievementType.gameId, parseInt(gameId)));
-      }
-
       // Create the query with all conditions
       const query = this.fastify.db
         .select({
@@ -90,8 +79,12 @@ export class AchievementController {
         .from(achievementType)
         .leftJoin(
           achievement,
-          and(...conditions)
-        );
+          and(
+            eq(achievement.achievementId, achievementType.id),
+            eq(achievement.accountId, accountId)
+          )
+        )
+        .where(gameId ? eq(achievementType.gameId, parseInt(gameId)) : undefined);
 
       const userAchievements = await query;
 
