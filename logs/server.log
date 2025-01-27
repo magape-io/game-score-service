@@ -5447,3 +5447,15 @@
 {"level":30,"time":1737950802084,"pid":32930,"hostname":"andydeMacBook-Pro.local","msg":"服务器启动成功"}
 {"level":30,"time":1737951067390,"pid":33502,"hostname":"andydeMacBook-Pro.local","msg":"Server listening at http://0.0.0.0:3000"}
 {"level":30,"time":1737951067390,"pid":33502,"hostname":"andydeMacBook-Pro.local","msg":"服务器启动成功"}
+{"level":30,"time":1737951290955,"pid":35017,"hostname":"andydeMacBook-Pro.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1737951290955,"pid":35017,"hostname":"andydeMacBook-Pro.local","msg":"服务器启动成功"}
+{"level":30,"time":1737951293615,"pid":35017,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","req":{"method":"GET","url":"/achievements/user?gameId=3","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":54202},"msg":"incoming request"}
+{"level":30,"time":1737951294844,"pid":35017,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","res":{"statusCode":200},"responseTime":1228.9074999997392,"msg":"request completed"}
+{"level":30,"time":1737951316203,"pid":35437,"hostname":"andydeMacBook-Pro.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1737951316203,"pid":35437,"hostname":"andydeMacBook-Pro.local","msg":"服务器启动成功"}
+{"level":30,"time":1737951316515,"pid":35437,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","req":{"method":"GET","url":"/achievements/user?gameId=3","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":54628},"msg":"incoming request"}
+{"level":30,"time":1737951317673,"pid":35437,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","res":{"statusCode":200},"responseTime":1157.2722920002416,"msg":"request completed"}
+{"level":30,"time":1737951342825,"pid":35771,"hostname":"andydeMacBook-Pro.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1737951342825,"pid":35771,"hostname":"andydeMacBook-Pro.local","msg":"服务器启动成功"}
+{"level":30,"time":1737951343141,"pid":35771,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","req":{"method":"GET","url":"/achievements/user?gameId=3","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":55092},"msg":"incoming request"}
+{"level":30,"time":1737951344391,"pid":35771,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","res":{"statusCode":200},"responseTime":1249.8449999997392,"msg":"request completed"}

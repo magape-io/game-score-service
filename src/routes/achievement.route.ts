@@ -80,6 +80,7 @@ export async function achievementRoutes(fastify: FastifyInstance) {
                     name: { type: "string", description: "Achievement name" },
                     gameId: { type: "number", description: "Associated game ID" },
                     description: { type: "string", description: "Achievement description" },
+                    reward: { type: "string", description: "Achievement reward" },
                     complete: { 
                       type: "boolean", 
                       nullable: true,

@@ -62,6 +62,7 @@ export class AchievementController {
           description: achievementType.description,
           complete: includeUserProgress ? achievement.complete : sql`false`.as('complete'),
           completeTime: includeUserProgress ? achievement.completeTime : sql`null`.as('completeTime'),
+          reward: achievementType.reward
         })
         .from(achievementType);
 
