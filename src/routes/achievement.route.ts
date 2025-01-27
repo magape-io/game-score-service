@@ -189,26 +189,29 @@ export async function achievementRoutes(fastify: FastifyInstance) {
             properties: {
               code: { type: "number" },
               err: { type: "string" },
-              data: { 
-                type: "array",
-                items: { type: "object" }
-              }
+              data: { type: "boolean" }
             }
+          },
+          404: {
+            type: "object",
+            properties: {
+              code: { type: "number" },
+              err: { type: "string" },
+              data: { type: "boolean" }
+            },
+            description: "Achievement type not found"
           },
           500: {
             type: "object",
             properties: {
               code: { type: "number" },
               err: { type: "string" },
-              data: { 
-                type: "array",
-                items: { type: "object" }
-              }
+              data: { type: "boolean" }
             },
-            description: "Internal server error",
-          },
-        },
-      },
+            description: "Internal server error"
+          }
+        }
+      }
     },
     achievementController.checkAchievement.bind(achievementController)
   );
