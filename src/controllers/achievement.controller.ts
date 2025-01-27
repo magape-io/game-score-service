@@ -53,48 +53,53 @@ export class AchievementController {
     try {
       const { address, gameId } = request.query;
 
-      // Create base query
-      const query = this.fastify.db
+      // Create base query builder
+      const queryBuilder = (includeUserProgress = false) => this.fastify.db
         .select({
           id: achievementType.id,
           name: achievementType.name,
           gameId: achievementType.gameId,
           description: achievementType.description,
-          complete: address ? achievement.complete : sql`null`.as('complete'),
-          completeTime: address ? achievement.completeTime : sql`null`.as('completeTime'),
+          complete: includeUserProgress ? achievement.complete : sql`false`.as('complete'),
+          completeTime: includeUserProgress ? achievement.completeTime : sql`null`.as('completeTime'),
         })
         .from(achievementType);
 
-      // If address is provided, join with achievements to get user's progress
+      // If address is provided, try to get user's achievements
       if (address) {
         const userAccount = await this.fastify.db
           .select()
           .from(account)
           .where(eq(account.address, address));
 
-        if (userAccount.length === 0) {
-          reply.code(404);
-          return { error: "User not found" };
+        // If user exists, include their achievement progress
+        if (userAccount.length > 0) {
+          const accountId = userAccount[0].id;
+          const query = queryBuilder(true)
+            .leftJoin(
+              achievement,
+              and(
+                eq(achievement.achievementId, achievementType.id),
+                eq(achievement.accountId, accountId)
+              )
+            );
+
+          // Add gameId filter if provided
+          if (gameId) {
+            query.where(eq(achievementType.gameId, parseInt(gameId)));
+          }
+
+          return await query;
         }
-
-        const accountId = userAccount[0].id;
-
-        query.leftJoin(
-          achievement,
-          and(
-            eq(achievement.achievementId, achievementType.id),
-            eq(achievement.accountId, accountId)
-          )
-        );
       }
 
-      // Add gameId filter if provided
+      // For cases where: no address provided, or user not found
+      const query = queryBuilder(false);
       if (gameId) {
         query.where(eq(achievementType.gameId, parseInt(gameId)));
       }
-
-      const achievements = await query;
-      return achievements;
+      
+      return await query;
     } catch (error: any) {
       reply.code(500);
       return { error: error.message };
