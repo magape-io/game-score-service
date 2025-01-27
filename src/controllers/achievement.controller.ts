@@ -89,7 +89,11 @@ export class AchievementController {
             query.where(eq(achievementType.gameId, parseInt(gameId)));
           }
 
-          return await query;
+          return {
+            code: 200,
+            err: "",
+            data: await query
+          };
         }
       }
 
@@ -99,10 +103,17 @@ export class AchievementController {
         query.where(eq(achievementType.gameId, parseInt(gameId)));
       }
       
-      return await query;
+      return {
+        code: 200,
+        err: "",
+        data: await query
+      };
     } catch (error: any) {
-      reply.code(500);
-      return { error: error.message };
+      return {
+        code: 500,
+        err: error.message,
+        data: []
+      };
     }
   }
 

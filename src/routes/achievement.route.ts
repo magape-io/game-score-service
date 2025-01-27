@@ -11,22 +11,35 @@ export async function achievementRoutes(fastify: FastifyInstance) {
       schema: {
         response: {
           200: {
-            type: "array",
-            items: {
-              type: "object",
-              properties: {
-                id: { type: "number" },
-                name: { type: "string" },
-                gameId: { type: "number" },
-                description: { type: "string" },
-              },
-            },
+            type: "object",
+            properties: {
+              code: { type: "number" },
+              err: { type: "string" },
+              data: {
+                type: "array",
+                items: {
+                  type: "object",
+                  properties: {
+                    id: { type: "number" },
+                    name: { type: "string" },
+                    gameId: { type: "number" },
+                    description: { type: "string" },
+                  },
+                },
+              }
+            }
           },
           500: {
             type: "object",
             properties: {
-              error: { type: "string" },
+              code: { type: "number" },
+              err: { type: "string" },
+              data: { 
+                type: "array",
+                items: { type: "object" }
+              }
             },
+            description: "Internal server error",
           },
         },
       },
@@ -54,38 +67,55 @@ export async function achievementRoutes(fastify: FastifyInstance) {
         },
         response: {
           200: {
-            type: "array",
-            items: {
-              type: "object",
-              properties: {
-                id: { type: "number", description: "Achievement type ID" },
-                name: { type: "string", description: "Achievement name" },
-                gameId: { type: "number", description: "Associated game ID" },
-                description: { type: "string", description: "Achievement description" },
-                complete: { 
-                  type: "boolean", 
-                  nullable: true,
-                  description: "Whether the user has completed this achievement"
+            type: "object",
+            properties: {
+              code: { type: "number" },
+              err: { type: "string" },
+              data: {
+                type: "array",
+                items: {
+                  type: "object",
+                  properties: {
+                    id: { type: "number", description: "Achievement type ID" },
+                    name: { type: "string", description: "Achievement name" },
+                    gameId: { type: "number", description: "Associated game ID" },
+                    description: { type: "string", description: "Achievement description" },
+                    complete: { 
+                      type: "boolean", 
+                      nullable: true,
+                      description: "Whether the user has completed this achievement"
+                    },
+                    completeTime: { 
+                      type: "string", 
+                      nullable: true,
+                      description: "Timestamp when the achievement was completed"
+                    },
+                  },
                 },
-                completeTime: { 
-                  type: "string", 
-                  nullable: true,
-                  description: "Timestamp when the achievement was completed"
-                },
-              },
-            },
+              }
+            }
           },
           404: {
             type: "object",
             properties: {
-              error: { type: "string" },
+              code: { type: "number" },
+              err: { type: "string" },
+              data: { 
+                type: "array",
+                items: { type: "object" }
+              }
             },
             description: "User not found",
           },
           500: {
             type: "object",
             properties: {
-              error: { type: "string" },
+              code: { type: "number" },
+              err: { type: "string" },
+              data: { 
+                type: "array",
+                items: { type: "object" }
+              }
             },
             description: "Internal server error",
           },
@@ -109,6 +139,31 @@ export async function achievementRoutes(fastify: FastifyInstance) {
             complete: { type: "boolean" },
           },
         },
+        response: {
+          200: {
+            type: "object",
+            properties: {
+              code: { type: "number" },
+              err: { type: "string" },
+              data: { 
+                type: "array",
+                items: { type: "object" }
+              }
+            }
+          },
+          500: {
+            type: "object",
+            properties: {
+              code: { type: "number" },
+              err: { type: "string" },
+              data: { 
+                type: "array",
+                items: { type: "object" }
+              }
+            },
+            description: "Internal server error",
+          },
+        },
       },
     },
     achievementController.createAchievement.bind(achievementController)
@@ -125,6 +180,31 @@ export async function achievementRoutes(fastify: FastifyInstance) {
           properties: {
             address: { type: "string" },
             type: { type: "number" },
+          },
+        },
+        response: {
+          200: {
+            type: "object",
+            properties: {
+              code: { type: "number" },
+              err: { type: "string" },
+              data: { 
+                type: "array",
+                items: { type: "object" }
+              }
+            }
+          },
+          500: {
+            type: "object",
+            properties: {
+              code: { type: "number" },
+              err: { type: "string" },
+              data: { 
+                type: "array",
+                items: { type: "object" }
+              }
+            },
+            description: "Internal server error",
           },
         },
       },
