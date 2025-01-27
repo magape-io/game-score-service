@@ -36,16 +36,20 @@ export async function achievementRoutes(fastify: FastifyInstance) {
 
   // 获取用户的成就完成情况列表
   fastify.get(
-    "/user/:address",
+    "/user",
     {
       schema: {
-        params: {
+        querystring: {
           type: "object",
           required: ["address"],
           properties: {
             address: { 
               type: "string",
               description: "User's blockchain address"
+            },
+            gameId: {
+              type: "string",
+              description: "Optional game ID to filter achievements",
             },
           },
         },

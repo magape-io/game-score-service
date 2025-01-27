@@ -18,8 +18,9 @@ interface CheckAchievementRequest {
 }
 
 interface GetUserAchievementsRequest {
-  Params: {
+  Querystring: {
     address: string;
+    gameId?: string; // 可选的gameId参数
   }
 }
 
@@ -49,7 +50,7 @@ export class AchievementController {
     reply: FastifyReply
   ) {
     try {
-      const { address } = request.params;
+      const { address, gameId } = request.query;
 
       // 先查找用户account
       const userAccount = await this.fastify.db
@@ -65,8 +66,19 @@ export class AchievementController {
 
       const accountId = userAccount[0].id;
 
-      // 获取所有成就类型和用户完成情况
-      const userAchievements = await this.fastify.db
+      // 构建查询条件
+      const conditions = [
+        eq(achievement.achievementId, achievementType.id),
+        eq(achievement.accountId, accountId)
+      ];
+
+      // 如果提供了gameId，添加gameId筛选
+      if (gameId) {
+        conditions.push(eq(achievementType.gameId, parseInt(gameId)));
+      }
+
+      // Create the query with all conditions
+      const query = this.fastify.db
         .select({
           id: achievementType.id,
           name: achievementType.name,
@@ -78,11 +90,10 @@ export class AchievementController {
         .from(achievementType)
         .leftJoin(
           achievement,
-          and(
-            eq(achievement.achievementId, achievementType.id),
-            eq(achievement.accountId, accountId)
-          )
+          and(...conditions)
         );
+
+      const userAchievements = await query;
 
       return userAchievements;
     } catch (error: any) {
