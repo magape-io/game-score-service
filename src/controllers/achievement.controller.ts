@@ -159,7 +159,21 @@ export class AchievementController {
     try {
       const { address, type } = request.body;
 
-      // 先查询account
+      // 先检查成就类型是否存在
+      const achievementTypeResult = await this.fastify.db
+        .select()
+        .from(achievementType)
+        .where(eq(achievementType.id, type));
+
+      if (achievementTypeResult.length === 0) {
+        return {
+          code: 404,
+          err: "Achievement type not found",
+          data: false
+        };
+      }
+
+      // 查询account
       const accountResult = await this.fastify.db
         .select()
         .from(account)
@@ -178,7 +192,9 @@ export class AchievementController {
 
       // 查询成就状态
       const result = await this.fastify.db
-        .select()
+        .select({
+          complete: achievement.complete
+        })
         .from(achievement)
         .where(
           and(
@@ -203,9 +219,10 @@ export class AchievementController {
         data: result[0].complete
       };
     } catch (error: any) {
+      console.error('Error in checkAchievement:', error);
       return {
         code: 500,
-        err: error.message || "Internal server error",
+        err: error.message,
         data: false
       };
     }
