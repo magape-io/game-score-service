@@ -1,0 +1,1 @@
+ALTER TABLE "achievement_type" ADD COLUMN "description" text;

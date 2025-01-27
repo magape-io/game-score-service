@@ -112,6 +112,7 @@ export const achievementType = pgTable("achievement_type", {
   id: serial().primaryKey().notNull(),
   gameId: integer().references(() => game.id).notNull(),
   name: text().notNull(),
+  description: text()
 });
 
 // 成就记录表（用户完成的成就）

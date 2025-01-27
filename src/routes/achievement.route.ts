@@ -4,6 +4,94 @@ import { AchievementController } from "../controllers/achievement.controller";
 export async function achievementRoutes(fastify: FastifyInstance) {
   const achievementController = new AchievementController(fastify);
 
+  // 获取所有成就类型列表
+  fastify.get(
+    "/",
+    {
+      schema: {
+        response: {
+          200: {
+            type: "array",
+            items: {
+              type: "object",
+              properties: {
+                id: { type: "number" },
+                name: { type: "string" },
+                gameId: { type: "number" },
+                description: { type: "string" },
+              },
+            },
+          },
+          500: {
+            type: "object",
+            properties: {
+              error: { type: "string" },
+            },
+          },
+        },
+      },
+    },
+    achievementController.getAllAchievements.bind(achievementController)
+  );
+
+  // 获取用户的成就完成情况列表
+  fastify.get(
+    "/user/:address",
+    {
+      schema: {
+        params: {
+          type: "object",
+          required: ["address"],
+          properties: {
+            address: { 
+              type: "string",
+              description: "User's blockchain address"
+            },
+          },
+        },
+        response: {
+          200: {
+            type: "array",
+            items: {
+              type: "object",
+              properties: {
+                id: { type: "number", description: "Achievement type ID" },
+                name: { type: "string", description: "Achievement name" },
+                gameId: { type: "number", description: "Associated game ID" },
+                description: { type: "string", description: "Achievement description" },
+                complete: { 
+                  type: "boolean", 
+                  nullable: true,
+                  description: "Whether the user has completed this achievement"
+                },
+                completeTime: { 
+                  type: "string", 
+                  nullable: true,
+                  description: "Timestamp when the achievement was completed"
+                },
+              },
+            },
+          },
+          404: {
+            type: "object",
+            properties: {
+              error: { type: "string" },
+            },
+            description: "User not found",
+          },
+          500: {
+            type: "object",
+            properties: {
+              error: { type: "string" },
+            },
+            description: "Internal server error",
+          },
+        },
+      },
+    },
+    achievementController.getUserAchievements.bind(achievementController)
+  );
+
   // 创建用户成就记录
   fastify.post(
     "/",

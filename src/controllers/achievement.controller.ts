@@ -1,5 +1,5 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
-import { achievement, account } from "../db/schema";
+import { achievement, account, achievementType } from "../db/schema";
 import { eq, and } from "drizzle-orm";
 
 interface CreateAchievementRequest {
@@ -17,8 +17,79 @@ interface CheckAchievementRequest {
   }
 }
 
+interface GetUserAchievementsRequest {
+  Params: {
+    address: string;
+  }
+}
+
 export class AchievementController {
   constructor(private fastify: FastifyInstance) {}
+
+  // 获取所有成就类型列表
+  async getAllAchievements(
+    request: FastifyRequest,
+    reply: FastifyReply
+  ) {
+    try {
+      const achievements = await this.fastify.db
+        .select()
+        .from(achievementType);
+
+      return achievements;
+    } catch (error: any) {
+      reply.code(500);
+      return { error: error.message };
+    }
+  }
+
+  // 获取用户的成就完成情况列表
+  async getUserAchievements(
+    request: FastifyRequest<GetUserAchievementsRequest>,
+    reply: FastifyReply
+  ) {
+    try {
+      const { address } = request.params;
+
+      // 先查找用户account
+      const userAccount = await this.fastify.db
+        .select()
+        .from(account)
+        .where(eq(account.address, address))
+        .limit(1);
+
+      if (!userAccount || userAccount.length === 0) {
+        reply.code(404);
+        return { error: "User not found" };
+      }
+
+      const accountId = userAccount[0].id;
+
+      // 获取所有成就类型和用户完成情况
+      const userAchievements = await this.fastify.db
+        .select({
+          id: achievementType.id,
+          name: achievementType.name,
+          gameId: achievementType.gameId,
+          description: achievementType.description,
+          complete: achievement.complete,
+          completeTime: achievement.completeTime,
+        })
+        .from(achievementType)
+        .leftJoin(
+          achievement,
+          and(
+            eq(achievement.achievementId, achievementType.id),
+            eq(achievement.accountId, accountId)
+          )
+        );
+
+      return userAchievements;
+    } catch (error: any) {
+      reply.code(500);
+      return { error: error.message };
+    }
+  }
 
   // 创建用户成就记录
   async createAchievement(

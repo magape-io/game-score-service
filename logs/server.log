@@ -5369,3 +5369,41 @@
 {"level":30,"time":1737783709379,"pid":88723,"hostname":"andydeMacBook-Pro.local","msg":"服务器启动成功"}
 {"level":30,"time":1737783710309,"pid":88723,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","req":{"method":"POST","url":"/scores/rank/3","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":63589},"msg":"incoming request"}
 {"level":30,"time":1737783710661,"pid":88723,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","res":{"statusCode":200},"responseTime":352.0614170432091,"msg":"request completed"}
+{"level":30,"time":1737947375247,"pid":14265,"hostname":"andydeMacBook-Pro.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1737947375248,"pid":14265,"hostname":"andydeMacBook-Pro.local","msg":"服务器启动成功"}
+{"level":30,"time":1737947436794,"pid":14265,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","req":{"method":"GET","url":"/achievements","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":53728},"msg":"incoming request"}
+{"level":30,"time":1737947436794,"pid":14265,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","msg":"Route GET:/achievements not found"}
+{"level":30,"time":1737947436798,"pid":14265,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","res":{"statusCode":404},"responseTime":3.8739160001277924,"msg":"request completed"}
+{"level":30,"time":1737947546724,"pid":14839,"hostname":"andydeMacBook-Pro.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1737947546724,"pid":14839,"hostname":"andydeMacBook-Pro.local","msg":"服务器启动成功"}
+{"level":30,"time":1737947574802,"pid":15034,"hostname":"andydeMacBook-Pro.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1737947574802,"pid":15034,"hostname":"andydeMacBook-Pro.local","msg":"服务器启动成功"}
+{"level":30,"time":1737947591064,"pid":15119,"hostname":"andydeMacBook-Pro.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1737947591064,"pid":15119,"hostname":"andydeMacBook-Pro.local","msg":"服务器启动成功"}
+{"level":30,"time":1737947690588,"pid":15119,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","req":{"method":"GET","url":"/achievements","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":55511},"msg":"incoming request"}
+{"level":30,"time":1737947691991,"pid":15119,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","res":{"statusCode":200},"responseTime":1402.329082999844,"msg":"request completed"}
+{"level":30,"time":1737947713611,"pid":15605,"hostname":"andydeMacBook-Pro.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1737947713611,"pid":15605,"hostname":"andydeMacBook-Pro.local","msg":"服务器启动成功"}
+{"level":30,"time":1737947715377,"pid":15605,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","req":{"method":"GET","url":"/achievements","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":55787},"msg":"incoming request"}
+{"level":30,"time":1737947716315,"pid":15605,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","res":{"statusCode":200},"responseTime":937.8100829999894,"msg":"request completed"}
+{"level":30,"time":1737947770531,"pid":16025,"hostname":"andydeMacBook-Pro.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1737947770531,"pid":16025,"hostname":"andydeMacBook-Pro.local","msg":"服务器启动成功"}
+{"level":30,"time":1737947775485,"pid":16025,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","req":{"method":"GET","url":"/achievements","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":56343},"msg":"incoming request"}
+{"level":30,"time":1737947777008,"pid":16025,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","res":{"statusCode":200},"responseTime":1522.675083000213,"msg":"request completed"}
+{"level":30,"time":1737947827568,"pid":16025,"hostname":"andydeMacBook-Pro.local","msg":"服务器已关闭"}
+{"level":30,"time":1737947831562,"pid":16767,"hostname":"andydeMacBook-Pro.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1737947831562,"pid":16767,"hostname":"andydeMacBook-Pro.local","msg":"服务器启动成功"}
+{"level":30,"time":1737947834029,"pid":16767,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","req":{"method":"GET","url":"/achievements","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":56587},"msg":"incoming request"}
+{"level":30,"time":1737947835610,"pid":16767,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","res":{"statusCode":200},"responseTime":1580.7327499999665,"msg":"request completed"}
+{"level":30,"time":1737947857411,"pid":17014,"hostname":"andydeMacBook-Pro.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1737947857412,"pid":17014,"hostname":"andydeMacBook-Pro.local","msg":"服务器启动成功"}
+{"level":30,"time":1737947857870,"pid":17014,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","req":{"method":"GET","url":"/achievements","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":56822},"msg":"incoming request"}
+{"level":30,"time":1737947859196,"pid":17014,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","res":{"statusCode":200},"responseTime":1326.078375000041,"msg":"request completed"}
+{"level":30,"time":1737947943496,"pid":17189,"hostname":"andydeMacBook-Pro.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1737947943496,"pid":17189,"hostname":"andydeMacBook-Pro.local","msg":"服务器启动成功"}
+{"level":30,"time":1737947959032,"pid":17271,"hostname":"andydeMacBook-Pro.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1737947959032,"pid":17271,"hostname":"andydeMacBook-Pro.local","msg":"服务器启动成功"}
+{"level":30,"time":1737947995961,"pid":17271,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","req":{"method":"GET","url":"/achievements/user/0x1234567890abcdef1234567890abcdef12345678","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":57472},"msg":"incoming request"}
+{"level":30,"time":1737947997905,"pid":17271,"hostname":"andydeMacBook-Pro.local","reqId":"req-1","res":{"statusCode":404},"responseTime":1944.3806250002235,"msg":"request completed"}
+{"level":30,"time":1737948058697,"pid":17271,"hostname":"andydeMacBook-Pro.local","reqId":"req-2","req":{"method":"GET","url":"/achievements/user/0xA34357486224151dDfDB291E13194995c22Df505","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":57795},"msg":"incoming request"}
+{"level":30,"time":1737948059529,"pid":17271,"hostname":"andydeMacBook-Pro.local","reqId":"req-2","res":{"statusCode":200},"responseTime":832.3950409996323,"msg":"request completed"}
