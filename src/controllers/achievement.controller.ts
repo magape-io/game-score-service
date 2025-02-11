@@ -166,8 +166,8 @@ export class AchievementController {
         .where(eq(account.address, address));
 
       if (!accountResult.length) {
-        return reply.code(404).send({
-          code: 404,
+        return reply.send({
+          code: 200,
           err: "Account not found",
           data: false
         });
