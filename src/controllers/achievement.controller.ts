@@ -1,6 +1,6 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
-import { achievement, account, achievementType } from "../db/schema";
-import { eq, and } from "drizzle-orm";
+import { achievement, account, achievementType, score } from "../db/schema";
+import { eq, and, gte, lt } from "drizzle-orm";
 import { sql } from "drizzle-orm/sql";
 
 interface CreateAchievementRequest {
@@ -159,72 +159,52 @@ export class AchievementController {
     try {
       const { address, type } = request.body;
 
-      // 先检查成就类型是否存在
-      const achievementTypeResult = await this.fastify.db
-        .select()
-        .from(achievementType)
-        .where(eq(achievementType.id, type));
-
-      if (achievementTypeResult.length === 0) {
-        return {
-          code: 404,
-          err: "Achievement type not found",
-          data: false
-        };
-      }
-
-      // 查询account
+      // Get the account ID
       const accountResult = await this.fastify.db
         .select()
         .from(account)
         .where(eq(account.address, address));
 
-      // 如果没找到账户，返回未完成
-      if (accountResult.length === 0) {
-        return {
-          code: 200,
-          err: "",
+      if (!accountResult.length) {
+        return reply.code(404).send({
+          code: 404,
+          err: "Account not found",
           data: false
-        };
+        });
       }
 
       const accountId = accountResult[0].id;
 
-      // 查询成就状态
-      const result = await this.fastify.db
-        .select({
-          complete: achievement.complete
-        })
-        .from(achievement)
+      // Get today's date in UTC+8 (matches server time)
+      const today = new Date();
+      const startOfDay = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+      const endOfDay = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+
+      // Check if there's a score update today
+      const scoreResult = await this.fastify.db
+        .select()
+        .from(score)
         .where(
           and(
-            eq(achievement.accountId, accountId),
-            eq(achievement.achievementId, type)
+            eq(score.accountId, accountId),
+            gte(score.updatedAt, startOfDay.toISOString()),
+            lt(score.updatedAt, endOfDay.toISOString())
           )
         );
 
-      // 如果没找到成就记录，返回未完成
-      if (result.length === 0) {
-        return {
-          code: 200,
-          err: "",
-          data: false
-        };
-      }
-
-      // 返回成就完成状态
-      return {
+      return reply.send({
         code: 200,
         err: "",
-        data: result[0].complete
-      };
-    } catch (error: any) {
-      console.error('Error in checkAchievement:', error);
-      return {
+        data: scoreResult.length > 0
+      });
+
+    } catch (error) {
+      console.error('Error checking achievement:', error);
+      return reply.code(500).send({
         code: 500,
-        err: error.message,
+        err: "Internal server error",
         data: false
-      };
+      });
     }
   }
 }

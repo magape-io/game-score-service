@@ -107,6 +107,27 @@ export const users = pgTable("users", {
 	name: text().notNull(),
 });
 
+// 游戏评分表（点赞/点踩）
+export const gameRating = pgTable("game_rating", {
+  id: serial().primaryKey().notNull(),
+  gameId: integer().references(() => game.id).notNull(),
+  isLike: boolean().notNull(),  // true for like, false for dislike
+  createdAt: timestamp("created_at", { mode: 'string' }).defaultNow(),
+}, (table) => [
+  foreignKey({
+    columns: [table.gameId],
+    foreignColumns: [game.id],
+    name: "game_rating_game_id_game_id_fk"
+  })
+]);
+
+export const gameRatingRelations = relations(gameRating, ({ one }) => ({
+  game: one(game, {
+    fields: [gameRating.gameId],
+    references: [game.id],
+  })
+}));
+
 // 成就类型表
 export const achievementType = pgTable("achievement_type", {
   id: serial().primaryKey().notNull(),
