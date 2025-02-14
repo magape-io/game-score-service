@@ -55,4 +55,14 @@ export async function ratingRoutes(fastify: FastifyInstance) {
     const res = await accountController.putRate(gameId, isLike)
     return res
   })
+
+  fastify.get<{
+    Params: {
+      gameId: string;
+    };
+  }>("/v2/:gameId",async(request,reply) => {
+    const {gameId} = request.params
+    const res = await accountController.getRate(gameId)
+    return res
+  })
 }

@@ -11,7 +11,8 @@ export class RatingController {
       .update(gameRateV2)
       .set({
         like: isLike ? sql`COALESCE("like", 0) + 1` : sql`"like"`,
-        dislike: isLike ? sql`"dislike"` : sql`COALESCE("dislike", 0) + 1`
+        dislike: isLike ? sql`"dislike"` : sql`COALESCE("dislike", 0) + 1`,
+        updatedAt: sql`CURRENT_TIMESTAMP`,
       })
       .where(eq(gameRateV2.gameId, parsedGameId))
       .returning();
@@ -28,5 +29,10 @@ export class RatingController {
         .returning()
     }
     return result[0];
+  }
+
+  async getRate(gameId: string) {
+    const parsedGameId = parseInt(gameId);
+    return await this.fastify.db.select().from(gameRateV2).where(eq(gameRateV2.gameId, parsedGameId))
   }
 }
