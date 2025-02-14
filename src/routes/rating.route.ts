@@ -1,8 +1,10 @@
 import { FastifyInstance } from "fastify";
 import { eq, sql } from "drizzle-orm";
 import { gameRating } from "../db/schema";
+import { RatingController } from "../controllers/rating.controller";
 
 export async function ratingRoutes(fastify: FastifyInstance) {
+  const accountController = new RatingController(fastify);
   // Rate a game (like/dislike)
   fastify.post<{
     Body: { gameId: number; isLike: boolean };
@@ -47,4 +49,10 @@ export async function ratingRoutes(fastify: FastifyInstance) {
       return reply.status(500).send({ error: "Failed to get rating stats" });
     }
   });
+
+  fastify.post<{Body: {gameId: string, isLike: boolean}}>("/v2",async(request,reply) => {
+    const {gameId, isLike} = request.body
+    const res = await accountController.putRate(gameId, isLike)
+    return res
+  })
 }

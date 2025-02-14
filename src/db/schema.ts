@@ -177,3 +177,19 @@ export const achievementRelations = relations(achievement, ({ one }) => ({
     references: [account.id],
   }),
 }));
+
+export const gameRateV2 = pgTable('game_rate_v2', {
+	id: serial().primaryKey().notNull(),
+	gameId: integer().references(() => game.id).notNull(),
+	like: integer().notNull(),
+	dislike: integer().notNull(),
+	createdAt: timestamp("created_at", { mode: 'string' }).defaultNow(),
+	updatedAt: timestamp("updated_at", { mode: 'string' }).default(sql`CURRENT_TIMESTAMP`),
+})
+
+export const gameRateV2Relations = relations(gameRateV2, ({ one }) => ({
+  game: one(game, {
+	fields: [gameRateV2.gameId],
+	references: [game.id],
+  }),
+}))
