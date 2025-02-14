@@ -50,10 +50,35 @@ export async function ratingRoutes(fastify: FastifyInstance) {
     }
   });
 
-  fastify.post<{Body: {gameId: string, isLike: boolean}}>("/v2",async(request,reply) => {
+  fastify.post<{Body: {gameId: string, isLike: boolean}}>("/v2",{
+    schema: {
+      response: {
+        200: {
+          type: 'object',
+          properties: {
+            code: { type: 'number' },
+            err: { type: 'string' },
+            data: {
+              type: 'object',
+              properties: {
+                gameId: { type: 'number' },
+                like: { type: 'number' },
+                dislike: { type: 'number' },
+                updatedAt: { type: 'string' }
+              }
+            }
+          }
+        }
+      }
+    }
+  },async(request,reply) => {
     const {gameId, isLike} = request.body
     const res = await accountController.putRate(gameId, isLike)
-    return res
+    return reply.send({
+      code:200,
+      err: '',
+      data: res
+    })
   })
 
   fastify.get<{
@@ -63,6 +88,10 @@ export async function ratingRoutes(fastify: FastifyInstance) {
   }>("/v2/:gameId",async(request,reply) => {
     const {gameId} = request.params
     const res = await accountController.getRate(gameId)
-    return res
+    return reply.send({
+      code:200,
+      err: '',
+      data: res
+    })
   })
 }
