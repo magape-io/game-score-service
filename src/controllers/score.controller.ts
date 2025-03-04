@@ -666,9 +666,9 @@ export class ScoreController {
         });
 
       return {
-        message: 'All scores have been reset and backed up',
-        backupFile: `score_backup_${timestamp}.csv`,
-        resetCount: existingScores.length
+        code: 200,
+        data: "success",
+        err: ''
       };
     } catch (error) {
       reply.code(500);
