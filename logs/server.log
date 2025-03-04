@@ -5757,3 +5757,13 @@
 {"level":30,"time":1741063009218,"pid":71722,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
 {"level":30,"time":1741063029548,"pid":71722,"hostname":"MacBook-Pro-2.local","reqId":"req-1","req":{"method":"POST","url":"/scores/reset-all","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":56487},"msg":"incoming request"}
 {"level":30,"time":1741063029649,"pid":71722,"hostname":"MacBook-Pro-2.local","reqId":"req-1","res":{"statusCode":200},"responseTime":100.68137499690056,"msg":"request completed"}
+{"level":30,"time":1741063281504,"pid":72933,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1741063281505,"pid":72933,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
+{"level":30,"time":1741063339521,"pid":73067,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1741063339521,"pid":73067,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
+{"level":30,"time":1741063428143,"pid":73067,"hostname":"MacBook-Pro-2.local","reqId":"req-1","req":{"method":"POST","url":"/scores/rank/3","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":59264},"msg":"incoming request"}
+{"level":30,"time":1741063428294,"pid":73067,"hostname":"MacBook-Pro-2.local","reqId":"req-1","res":{"statusCode":200},"responseTime":149.79166699945927,"msg":"request completed"}
+{"level":30,"time":1741063523027,"pid":73526,"hostname":"MacBook-Pro-2.local","msg":"Server listening at http://0.0.0.0:3000"}
+{"level":30,"time":1741063523027,"pid":73526,"hostname":"MacBook-Pro-2.local","msg":"服务器启动成功"}
+{"level":30,"time":1741063653363,"pid":73526,"hostname":"MacBook-Pro-2.local","reqId":"req-1","req":{"method":"POST","url":"/scores/rank/3","hostname":"localhost:3000","remoteAddress":"127.0.0.1","remotePort":60723},"msg":"incoming request"}
+{"level":30,"time":1741063653478,"pid":73526,"hostname":"MacBook-Pro-2.local","reqId":"req-1","res":{"statusCode":200},"responseTime":114.40925000607967,"msg":"request completed"}

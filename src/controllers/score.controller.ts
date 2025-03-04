@@ -9,6 +9,24 @@ import { readFileSync, readdirSync, statSync } from 'fs';
 export class ScoreController {
   constructor(private fastify: FastifyInstance) {}
 
+  // 将东八区时间转换为UTC时间戳
+  private convertToUTCTimestamp(localTime: string | number): number {
+    try {
+      if (typeof localTime === 'number') {
+        return localTime;
+      }
+      // 假设输入的是东八区的时间
+      const date = new Date(localTime);
+      if (isNaN(date.getTime())) {
+        throw new Error("Invalid date format");
+      }
+      // 东八区偏移量是 +8 小时，所以需要减去 8 小时得到 UTC 时间
+      return date.getTime() - (8 * 60 * 60 * 1000);
+    } catch (error) {
+      throw new Error("Invalid time format");
+    }
+  }
+
   async getAllScores() {
     return this.fastify.db
       .select({
@@ -253,38 +271,18 @@ export class ScoreController {
     }
   
     if (startTime) {
-      let startDate: string;
       try {
-        const date = new Date(startTime);
-        if (isNaN(date.getTime())) {
-          const timestamp = parseInt(startTime.toString());
-          if (isNaN(timestamp)) {
-            throw new Error("Invalid date format");
-          }
-          startDate = new Date(timestamp).toISOString();
-        } else {
-          startDate = date.toISOString();
-        }
-        filters.push(sql`${score.updatedAt} >= ${startDate}`);
+        const utcTimestamp = this.convertToUTCTimestamp(startTime);
+        filters.push(sql`${score.updatedAt} >= ${new Date(utcTimestamp).toISOString()}`);
       } catch (error) {
         throw new Error("Invalid startTime format");
       }
     }
   
     if (endTime) {
-      let endDate: string;
       try {
-        const date = new Date(endTime);
-        if (isNaN(date.getTime())) {
-          const timestamp = parseInt(endTime.toString());
-          if (isNaN(timestamp)) {
-            throw new Error("Invalid date format");
-          }
-          endDate = new Date(timestamp).toISOString();
-        } else {
-          endDate = date.toISOString();
-        }
-        filters.push(sql`${score.updatedAt} <= ${endDate}`);
+        const utcTimestamp = this.convertToUTCTimestamp(endTime);
+        filters.push(sql`${score.updatedAt} <= ${new Date(utcTimestamp).toISOString()}`);
       } catch (error) {
         throw new Error("Invalid endTime format");
       }
@@ -522,19 +520,9 @@ export class ScoreController {
           ...(startTime
             ? [
                 (() => {
-                  let startDate: string;
                   try {
-                    const date = new Date(startTime);
-                    if (isNaN(date.getTime())) {
-                      const timestamp = parseInt(startTime.toString());
-                      if (isNaN(timestamp)) {
-                        throw new Error("Invalid date format");
-                      }
-                      startDate = new Date(timestamp).toISOString();
-                    } else {
-                      startDate = date.toISOString();
-                    }
-                    return sql`${score.updatedAt} >= ${startDate}`;
+                    const utcTimestamp = this.convertToUTCTimestamp(startTime);
+                    return sql`${score.updatedAt} >= ${new Date(utcTimestamp).toISOString()}`;
                   } catch (error) {
                     throw new Error("Invalid startTime format");
                   }
@@ -544,19 +532,9 @@ export class ScoreController {
           ...(endTime
             ? [
                 (() => {
-                  let endDate: string;
                   try {
-                    const date = new Date(endTime);
-                    if (isNaN(date.getTime())) {
-                      const timestamp = parseInt(endTime.toString());
-                      if (isNaN(timestamp)) {
-                        throw new Error("Invalid date format");
-                      }
-                      endDate = new Date(timestamp).toISOString();
-                    } else {
-                      endDate = date.toISOString();
-                    }
-                    return sql`${score.updatedAt} <= ${endDate}`;
+                    const utcTimestamp = this.convertToUTCTimestamp(endTime);
+                    return sql`${score.updatedAt} <= ${new Date(utcTimestamp).toISOString()}`;
                   } catch (error) {
                     throw new Error("Invalid endTime format");
                   }

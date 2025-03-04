@@ -487,7 +487,12 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
     async (request, reply) => {
       const { gameId } = request.params;
       console.log("Raw request body:", request.body);
-      const { propId, rank = 10000, startTime, endTime } = request.body;
+      const { propId, rank = 10000, startTime: rawStartTime, endTime: rawEndTime } = request.body;
+      
+      // 将本地时间转换为UTC时间
+      const startTime = rawStartTime ? new Date(rawStartTime).toISOString() : undefined;
+      const endTime = rawEndTime ? new Date(rawEndTime).toISOString() : undefined;
+      
       console.log("rank before getRankings:", rank, "type:", typeof rank);
       console.log("rank is from", rank);
       const result = await scoreController.getRankings(
