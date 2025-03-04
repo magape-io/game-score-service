@@ -432,6 +432,82 @@ const scoreRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
     console.log('result from getRankings:', result);
     return result;
   });
+
+  // 重置所有分数
+  fastify.post('/reset-all', {
+    schema: {
+      response: {
+        200: {
+          type: 'object',
+          properties: {
+            message: { type: 'string' },
+            backupFile: { type: 'string' },
+            resetCount: { type: 'number' }
+          }
+        }
+      }
+    }
+  }, async (request, reply) => {
+    return scoreController.resetAllScores(reply)
+  })
+
+  // 从备份文件恢复数据
+  fastify.post<{
+    Body: {
+      backupFile: string;
+    };
+  }>('/restore', {
+    schema: {
+      body: {
+        type: 'object',
+        required: ['backupFile'],
+        properties: {
+          backupFile: { type: 'string' }
+        }
+      },
+      response: {
+        200: {
+          type: 'object',
+          properties: {
+            message: { type: 'string' },
+            restoredCount: { type: 'number' }
+          }
+        }
+      }
+    }
+  }, async (request, reply) => {
+    const { backupFile } = request.body;
+    return scoreController.restoreScores(backupFile, reply);
+  });
+
+  // 获取备份文件列表
+  fastify.get('/backups', {
+    schema: {
+      response: {
+        200: {
+          type: 'object',
+          properties: {
+            message: { type: 'string' },
+            files: {
+              type: 'array',
+              items: {
+                type: 'object',
+                properties: {
+                  fileName: { type: 'string' },
+                  size: { type: 'number' },
+                  createdAt: { type: 'string' },
+                  modifiedAt: { type: 'string' }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }, async () => {
+    return scoreController.getBackupFiles();
+  });
+
 }
 
 export default scoreRoutes

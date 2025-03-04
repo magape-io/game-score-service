@@ -1,6 +1,10 @@
 import { FastifyInstance, FastifyReply } from "fastify";
 import { score, game, account, scoreName } from "../db/schema";
 import { eq, desc, and, SQL, sql, gte, lte } from "drizzle-orm";
+import { createObjectCsvWriter } from 'csv-writer';
+import { join } from 'path';
+import { parse } from 'csv-parse/sync';
+import { readFileSync, readdirSync, statSync } from 'fs';
 
 export class ScoreController {
   constructor(private fastify: FastifyInstance) {}
@@ -570,5 +574,132 @@ export class ScoreController {
       err: "",
       data: rankings,
     };
+  }
+
+  // 从备份文件恢复数据
+  async restoreScores(backupFile: string, reply: FastifyReply) {
+    try {
+      const backupPath = join(process.cwd(), 'backups', backupFile);
+      const fileContent = readFileSync(backupPath, 'utf-8');
+      
+      // 解析CSV文件
+      const records = parse(fileContent, {
+        columns: true,
+        skip_empty_lines: true
+      });
+
+      // 开始批量恢复数据
+      const results = await this.fastify.db.transaction(async (tx) => {
+        // 先清空当前数据
+        await tx.delete(score);
+
+        // 批量插入备份数据
+        const insertPromises = records.map((record:any) => {
+          return tx.insert(score).values({
+            id: parseInt(record.ID),
+            score: parseInt(record.Score), 
+            gameId: parseInt(record['Game ID']),
+            accountId: parseInt(record['Account ID']),
+            createdAt: new Date(record['Created At']).toISOString(), 
+            updatedAt: new Date(record['Updated At']).toISOString()  
+          });
+        });
+
+        return Promise.all(insertPromises);
+      });
+
+      return {
+        message: 'Scores have been restored successfully',
+        restoredCount: results.length
+      };
+    } catch (error) {
+      reply.code(500);
+      throw new Error(`Failed to restore scores: `);
+    }
+  }
+
+  // 重置所有分数并备份数据
+  async resetAllScores(reply: FastifyReply) {
+    try {
+      // 1. 获取所有现有分数数据
+      const existingScores = await this.fastify.db
+        .select({
+          id: score.id,
+          score: score.score,
+          gameId: score.gameId,
+          accountId: score.accountId,
+          createdAt: score.createdAt,
+          updatedAt: score.updatedAt,
+          accountAddress: account.address,
+          gameName: game.name,
+        })
+        .from(score)
+        .leftJoin(account, eq(score.accountId, account.id))
+        .leftJoin(game, eq(score.gameId, game.id));
+
+      // 2. 导出数据到CSV
+      const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+      const backupDir = join(process.cwd(), 'backups');
+      const csvWriter = createObjectCsvWriter({
+        path: join(backupDir, `score_backup_${timestamp}.csv`),
+        header: [
+          { id: 'id', title: 'ID' },
+          { id: 'score', title: 'Score' },
+          { id: 'gameId', title: 'Game ID' },
+          { id: 'accountId', title: 'Account ID' },
+          { id: 'accountAddress', title: 'Account Address' },
+          { id: 'gameName', title: 'Game Name' },
+          { id: 'createdAt', title: 'Created At' },
+          { id: 'updatedAt', title: 'Updated At' },
+        ],
+      });
+      
+      await csvWriter.writeRecords(existingScores);
+
+      // 3. 重置所有分数
+      await this.fastify.db
+        .update(score)
+        .set({
+          score: 0,
+          createdAt: new Date().toISOString(), 
+          updatedAt: new Date().toISOString()  
+        });
+
+      return {
+        message: 'All scores have been reset and backed up',
+        backupFile: `score_backup_${timestamp}.csv`,
+        resetCount: existingScores.length
+      };
+    } catch (error) {
+      reply.code(500);
+      throw new Error(`Failed to reset scores: `);
+    }
+  }
+
+  // 获取备份文件列表
+  async getBackupFiles() {
+    try {
+      const backupDir = join(process.cwd(), 'backups');
+      const files = readdirSync(backupDir)
+        .filter(file => file.endsWith('.csv'))
+        .map(file => {
+          const filePath = join(backupDir, file);
+          const stats = statSync(filePath);
+          return {
+            fileName: file,
+            size: stats.size,
+            createdAt: stats.birthtime.toISOString(),
+            modifiedAt: stats.mtime.toISOString()
+          };
+        })
+        .sort((a, b) => b.fileName.localeCompare(a.fileName)); // 按文件名倒序，最新的在前面
+
+      return {
+        message: 'Backup files retrieved successfully',
+        files
+      };
+    } catch (error) {
+      throw new Error(`Failed to get backup files`);
+    }
   }
 }
